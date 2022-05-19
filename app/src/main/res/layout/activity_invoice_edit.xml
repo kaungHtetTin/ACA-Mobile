@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="7dp"
+    tools:context=".InvoiceEditActivity">
+
+
+    <TextView
+        android:text="Edit Invoice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/color_on_primary" />
+
+
+    <TextView
+        android:text="Logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"/>
+
+    <RelativeLayout
+        android:layout_width="100dp"
+        android:layout_marginStart="10dp"
+        android:layout_height="100dp">
+        <ImageView
+            android:id="@+id/iv_logo"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/bg_price_stroke"
+            android:layout_marginTop="10dp"/>
+
+        <ImageView
+            android:id="@+id/iv_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_camera_alt_24"
+            android:layout_centerInParent="true"/>
+    </RelativeLayout>
+
+
+    <TextView
+        android:text="Company Name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"/>
+
+    <EditText
+        android:id="@+id/et_invoice_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:inputType="text"
+        android:hint="Enter customer name"/>
+
+    <TextView
+        android:text="Phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"/>
+
+    <EditText
+        android:id="@+id/et_invoice_phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:inputType="phone"
+        android:hint="Enter phone"/>
+
+    <TextView
+        android:text="Address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:layout_marginTop="5dp"/>
+
+    <EditText
+        android:id="@+id/et_invoice_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:hint="Enter address"/>
+
+
+    <Button
+        android:id="@+id/bt_save"
+        android:text="Save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginTop="50dp"/>
+
+</LinearLayout>

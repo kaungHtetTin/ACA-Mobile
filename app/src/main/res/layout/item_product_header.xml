@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+    <TextView
+        android:id="@+id/tv_product_name"
+        android:layout_width="150dp"
+        android:text="Product Name"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:gravity="center_vertical"
+        android:background="@drawable/bg_price_header"/>
+
+    <TextView
+        android:id="@+id/tv_retail_price"
+        android:text="Retail Price"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="5dp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:background="@drawable/bg_price_header"/>
+
+    <TextView
+        android:id="@+id/tv_5_price"
+        android:text="5 Price"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="5dp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:background="@drawable/bg_price_header"/>
+
+    <TextView
+        android:id="@+id/tv_10_price"
+        android:text="10 Price"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="5dp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:background="@drawable/bg_price_header"/>
+
+    <TextView
+        android:id="@+id/tv_20_price"
+        android:text="20 Price"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="5dp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:background="@drawable/bg_price_header"/>
+
+
+    <TextView
+        android:id="@+id/tv_50_price"
+        android:text="50 Price"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="5dp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:background="@drawable/bg_price_header"/>
+
+    <TextView
+        android:id="@+id/tv_100_price"
+        android:text="100 Price"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="5dp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:background="@drawable/bg_price_header"/>
+
+    <TextView
+        android:id="@+id/tv_200_price"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_price_header"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="200 Price"
+        android:textColor="@color/white"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_300_price"
+        android:text="300 Price"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="5dp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:background="@drawable/bg_price_header"/>
+
+    <TextView
+        android:id="@+id/tv_500_price"
+        android:text="500 Price"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="5dp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:background="@drawable/bg_price_header"/>
+
+    <TextView
+        android:id="@+id/tv_1000_price"
+        android:text="1000 Price"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="5dp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:background="@drawable/bg_price_header"/>
+
+    <TextView
+        android:id="@+id/tv_2000_price"
+        android:text="2000 Price"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="5dp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:background="@drawable/bg_price_header"/>
+
+    <TextView
+        android:id="@+id/tv_3000_price"
+        android:text="3000 Price"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="5dp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:background="@drawable/bg_price_header"/>
+
+    <TextView
+        android:id="@+id/tv_5000_price"
+        android:text="5000 Price"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="5dp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:background="@drawable/bg_price_header"/>
+
+    <TextView
+        android:id="@+id/tv_point"
+        android:text="Points"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="5dp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:background="@drawable/bg_price_header"/>
+
+    <TextView
+        android:id="@+id/tv_discount"
+        android:text="Discount"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="5dp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:background="@drawable/bg_price_header"/>
+
+
+</LinearLayout>

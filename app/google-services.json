@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "177411808294",
+    "project_id": "aca-mobile-2e721",
+    "storage_bucket": "aca-mobile-2e721.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:177411808294:android:1a8f7579bf43956b3cdae7",
+        "android_client_info": {
+          "package_name": "com.madmax.acamobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "177411808294-fa7vdvggkqrrh4dkr66cjkgjgj8dv18m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqa3EuTIvQs5ZIKtEvvwIpLJHlZi-AdwM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "177411808294-fa7vdvggkqrrh4dkr66cjkgjgj8dv18m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

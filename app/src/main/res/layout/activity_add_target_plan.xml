@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".AddTargetPlanActivity">
+    <TextView
+        android:id="@+id/tv_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="20dp"
+        android:text="Create new target plan"
+        android:textColor="@color/color_on_primary"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/tv_startDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="30dp"
+        android:textSize="14sp"
+        android:textColor = "?android:textColorPrimary"
+        android:layout_below="@id/tv_header"
+        app:drawableStartCompat="@drawable/ic_baseline_date_range_24"
+        android:text="Select An Initial Date"
+        />
+
+    <TextView
+        android:id="@+id/tv_endDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginStart="30dp"
+        android:textSize="14sp"
+        android:layout_below="@id/tv_startDate"
+        android:textColor = "?android:textColorPrimary"
+        android:text="Select A Final Date"
+        app:drawableStartCompat="@drawable/ic_baseline_date_range_24" />
+
+    <Button
+        android:id="@+id/bt_create"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Create"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/tv_endDate"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="30dp"/>
+
+    <ProgressBar
+        android:id="@+id/pb"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:visibility="gone"
+        android:layout_marginTop="35dp"/>
+
+</RelativeLayout>

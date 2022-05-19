@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/tv1"
+        android:layout_width="wrap_content"
+        android:text="Product"
+        android:gravity="center"
+        android:background="@drawable/bg_noti_blue_table_stoke"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:padding="5dp"
+        android:layout_toStartOf="@id/tv2"
+        android:layout_alignParentStart="true"
+        android:textColor="@color/my_text_color"
+        android:layout_height="32dp"/>
+
+    <TextView
+        android:id="@+id/tv2"
+        android:layout_width="80dp"
+        android:text="Quantity"
+        android:gravity="center"
+        android:background="@drawable/bg_noti_blue_table_stoke"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:textColor="@color/my_text_color"
+        android:layout_toStartOf="@id/tv4"
+        android:layout_height="32dp"/>
+
+    <TextView
+        android:id="@+id/tv4"
+        android:layout_width="80dp"
+        android:text="FOC"
+        android:gravity="center"
+        android:background="@drawable/bg_noti_blue_table_stoke"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:textColor="@color/my_text_color"
+        android:layout_toStartOf="@id/tv3"
+        android:layout_height="32dp"/>
+
+
+    <TextView
+        android:id="@+id/tv3"
+        android:layout_width="80dp"
+        android:text="Left"
+        android:gravity="center"
+        android:background="@drawable/bg_noti_blue_table_stoke"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:textColor="@color/my_text_color"
+        android:layout_alignParentEnd="true"
+        android:layout_height="32dp"/>
+
+</RelativeLayout>

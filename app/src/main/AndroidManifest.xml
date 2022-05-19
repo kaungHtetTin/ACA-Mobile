@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.madmax.acamobile">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="28" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.BusinessMaster"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".TargetPlanDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AddTargetPlanActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TargetPlanActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SaleListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".InvoiceEditActivity"
+            android:exported="false" />
+        <activity
+            android:name=".InvoiceActivity"
+            android:exported="false" />
+        <activity
+            android:name=".VoucherActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ProductTransferActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MyOrderDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".OrderDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".OrderActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MyOrderActivity"
+            android:exported="false" />
+        <activity
+            android:name=".BusinessActivity"
+            android:exported="false" />
+        <activity
+            android:name=".BrandListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CreateOrderActivity2"
+            android:exported="false" />
+        <activity
+            android:name=".PartnerGroupDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PartnerGroupListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AddGroupMemberActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ProfileActivity"
+            android:exported="false"
+            android:theme="@style/Theme.MainActivity.NoActionBar" />
+        <activity
+            android:name=".GroupSettingActivity"
+            android:exported="false"
+            android:theme="@style/Theme.MainActivity.NoActionBar" />
+        <activity
+            android:name=".MyGroupDetailActivity"
+            android:exported="false"
+            android:theme="@style/Theme.MainActivity.NoActionBar" />
+        <activity
+            android:name=".AddGroupActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MyGroupActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CreateOrderActivity"
+            android:exported="false" />
+        <activity
+            android:name=".StockProductUpdateActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ProductLeftActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DataUpdateActivity"
+            android:exported="false" />
+        <activity
+            android:name=".StockListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ProductListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UpdateImageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UpdateProfileActivity"
+            android:exported="false"
+            android:theme="@style/Theme.BusinessMaster.NoActionBar" />
+        <activity
+            android:name=".SignUpActivity"
+            android:exported="false"
+            android:theme="@style/Theme.BusinessMaster.NoActionBar" />
+        <activity
+            android:name=".LoginActivity"
+            android:exported="false"
+            android:theme="@style/Theme.BusinessMaster.NoActionBar" />
+        <activity
+            android:name=".SplashScreenActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:theme="@style/Theme.MainActivity.NoActionBar" />
+    </application>
+
+</manifest>

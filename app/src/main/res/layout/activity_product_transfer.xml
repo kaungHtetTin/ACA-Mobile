@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProductTransferActivity">
+
+    <LinearLayout
+        android:id="@+id/layout1"
+        android:padding="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:text="Initial Stock"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textColor="@color/color_on_primary"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:text="Target Stock"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textColor="@color/color_on_primary"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layout1"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="120dp"
+            android:layout_height="40dp"
+            android:textColor="@color/my_text_color"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:text="Products" />
+
+        <TextView
+            android:id="@+id/tv_initial"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:background="@drawable/bg_noti_blue_table_stoke"
+            android:layout_weight="1"
+            android:text="initial"
+            android:textColor="@color/my_text_color"
+            android:textSize="14sp"
+            android:gravity="center" />
+
+        <TextView
+            android:id="@+id/tv_target"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:background="@drawable/bg_noti_blue_table_stoke"
+            android:layout_weight="1"
+            android:text="target"
+            android:textColor="@color/my_text_color"
+            android:textSize="14sp"
+            android:gravity="center" />
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layout2"
+        android:layout_alignParentBottom="true" />
+
+    <ProgressBar
+        android:id="@+id/pb"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"/>
+
+</RelativeLayout>

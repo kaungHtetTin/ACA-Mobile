@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_header"
+        android:text="Select Stocks"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:textColor="@color/color_on_primary"
+        android:padding="7dp" />
+
+    <TextView
+        android:id="@+id/tv1"
+        android:text="Initial Stock"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/color_on_primary"
+        android:padding="5dp"
+        android:layout_alignTop="@id/sp_initial"
+        android:layout_alignBottom="@id/sp_initial"
+        android:gravity="center_vertical"
+        android:layout_marginStart="10dp"
+        android:layout_below="@id/tv_header"/>
+
+    <Spinner
+        android:id="@+id/sp_initial"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/tv1"
+        android:layout_below="@id/tv_header"/>
+
+    <TextView
+        android:id="@+id/tv2"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/sp_initial"
+        android:layout_alignTop="@id/sp_target"
+        android:layout_alignBottom="@id/sp_target"
+        android:layout_marginStart="10dp"
+        android:gravity="center_vertical"
+        android:padding="5dp"
+        android:text="Target Stock"
+        android:textColor="@color/color_on_primary" />
+
+    <Spinner
+        android:id="@+id/sp_target"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/sp_initial"
+        android:layout_marginTop="30dp"
+        android:layout_toEndOf="@id/tv2"/>
+
+    <Button
+        android:id="@+id/bt_continue"
+        android:text="Continue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/sp_target"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="30dp"/>
+
+</RelativeLayout>
