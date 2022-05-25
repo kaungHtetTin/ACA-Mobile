@@ -41,7 +41,7 @@ import java.util.concurrent.Executor;
 public class ProfileActivity extends AppCompatActivity {
 
     TextView tv_name,tv_phone,tv_email,tv_address,tv_date,tv_startDate,tv_endDate;
-    LinearLayout order_layout,sent_layout;
+    LinearLayout order_layout,sent_layout,target_layout;
     ImageView iv_profile_small,iv_collapse;
     FloatingActionButton fab;
     Executor postExecutor;
@@ -76,7 +76,10 @@ public class ProfileActivity extends AppCompatActivity {
         tv_endDate=findViewById(R.id.tv_endDate);
         order_layout=findViewById(R.id.order_layout);
         sent_layout=findViewById(R.id.sent_layout);
+        target_layout=findViewById(R.id.target_layout);
         bt_calculate=findViewById(R.id.bt_calculate);
+
+
 
         iv_profile_small=findViewById(R.id.iv_profile_small);
         iv_collapse=findViewById(R.id.iv_collapse);
@@ -142,6 +145,16 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+            }
+        });
+
+        target_layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(ProfileActivity.this,PlanAndOrderActivity.class);
+                intent.putExtra("memberId",memberId);
+                intent.putExtra("groupId",groupId);
+                startActivity(intent);
             }
         });
 

@@ -20,6 +20,19 @@
         android:theme="@style/Theme.BusinessMaster"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".AboutGroupActivity"
+            android:theme="@style/Theme.MainActivity.NoActionBar"
+            android:exported="false" />
+        <activity
+            android:name=".StatisticalChartActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PlanAndOrderActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SaleRateActivity"
+            android:exported="false" />
+        <activity
             android:name=".TargetPlanDetailActivity"
             android:exported="false" />
         <activity
@@ -66,7 +79,8 @@
             android:exported="false" />
         <activity
             android:name=".PartnerGroupDetailActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.MainActivity.NoActionBar" />
         <activity
             android:name=".PartnerGroupListActivity"
             android:exported="false" />

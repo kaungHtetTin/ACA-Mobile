@@ -1,7 +1,7 @@
 package com.madmax.acamobile.app;
 
 public class Routing {
-    public static String DOMAIN="http://192.168.138.17/";
+    public static String DOMAIN="http://192.168.104.17/";
     public static final String API=DOMAIN+"acamobile/api/";
     public static final String PROFILE_URL=DOMAIN+"acamobile/uploads/profiles/";
     public static final String GROUP_COVER_URL=DOMAIN+"acamobile/uploads/groups/";
@@ -38,6 +38,8 @@ public class Routing {
     public static final String GET_GROUP_DETAIL=API+"groups/getdetail.php";
     public static final String DISABLE_GROUP=API+"groups/disable.php";
     public static final String GET_MEMBER_PROFILE=API+"groups/memberprofile.php";
+    public static final String COMPARE_TARGET_PLAN_AND_ORDER_RATE=API+"groups/gettargetplanandorderrate.php";
+
 
     //partner groups
     public static final String GET_PARTNER_GROUP=API+"groups/partnergroups.php";
@@ -66,4 +68,14 @@ public class Routing {
     public static final String GET_TARGET_PLAN=API+"targetplan/get.php";
     public static final String UPDATE_TARGET_PLAN_ITEM_COUNT=API+"targetplan/updateitemquantity.php";
     public static final String GET_TARGET_PLAN_DETAILS=API+"targetplan/getdetails.php";
+    public static final String UPDATE_GROUP_TARGET_PLAN=API+"targetplan/updategrouptargetplan.php";
+
+
+    //chart
+    public static final String CHART_SALE_AND_ORDER=API+"chart/orderandsale.php";
+    public static final String CHART_PROFIT_PER_MONTH=API+"chart/profitpermonth.php";
+    public static final String CHART_RETAIL_AND_ORDER=API+"chart/retailandagent.php";
+    public static final String CHART_SALE_RATE_IN_A_PRODUCT=API+"chart/salerateforaitem.php";
+
+
 }

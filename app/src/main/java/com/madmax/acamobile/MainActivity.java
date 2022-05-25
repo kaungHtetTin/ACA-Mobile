@@ -5,6 +5,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
+import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.DefaultItemAnimator;
@@ -15,29 +16,53 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.AxisBase;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.formatter.ValueFormatter;
+import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
+import com.google.android.material.datepicker.MaterialDatePicker;
+import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
 import com.google.android.material.navigation.NavigationView;
 import com.madmax.acamobile.adapters.MainPanelAdapter;
 import com.madmax.acamobile.app.AppUtils;
 import com.madmax.acamobile.app.AuthChecker;
+import com.madmax.acamobile.app.Initializer;
+import com.madmax.acamobile.app.MyHttp;
 import com.madmax.acamobile.app.Routing;
+import com.madmax.acamobile.charts.SaleAndOrderRate;
 import com.madmax.acamobile.models.PanelModel;
+import com.madmax.acamobile.models.ProductModel;
+
+import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
 import java.util.Objects;
+import java.util.TimeZone;
+import java.util.concurrent.Executor;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     ImageView iv_edit_profile;
-    String name,phone,profileImage;
+    String name,phone,profileImage,userId;
     ImageView iv_profile;
     TextView tv_username,tv_phone;
     SharedPreferences sharedPreferences;
@@ -45,6 +70,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     RecyclerView recyclerView;
     ArrayList<PanelModel> panelModels=new ArrayList<>();
     MainPanelAdapter adapter;
+
+    //dashboard
+    LinearLayout chartLayout;
+
 
 
     @Override
@@ -56,11 +85,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         name=sharedPreferences.getString("username","");
         phone=sharedPreferences.getString("phone","");
         profileImage=sharedPreferences.getString("profileImage","http");
+        userId=sharedPreferences.getString("userId",null);
         initializePanelObject();
         setUpView();
     }
 
     private void setUpView(){
+
+        chartLayout=findViewById(R.id.chartLayout);
+
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -103,16 +136,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
+
+        SaleAndOrderRate saleAndOrderRate=new SaleAndOrderRate(this,getSupportFragmentManager(),userId);
+        chartLayout.addView(saleAndOrderRate.getView());
+
+
+
+
     }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id=item.getItemId();
         switch (id){
-            case R.id.nav_updateProfile:
-//                Intent intent1=new Intent(MainActivity.this,EditProfileActivity.class);
-//                startActivity(intent1);
-                break;
+
             case R.id.nav_logOut:
 
                 new AuthChecker(MainActivity.this).logout();
@@ -146,15 +183,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private void initializePanelObject(){
         // greatest id =8
-        panelModels.add(new PanelModel("My Business",R.mipmap.ic_launcher,8));
-        panelModels.add(new PanelModel("Create Order",R.mipmap.ic_launcher,1));
-        panelModels.add(new PanelModel("Voucher",R.mipmap.ic_launcher,2));
-        panelModels.add(new PanelModel("Products Left",R.mipmap.ic_launcher,3));
-        panelModels.add(new PanelModel("Products",R.mipmap.ic_launcher,4));
-        panelModels.add(new PanelModel("Stocks",R.mipmap.ic_launcher,5));
-        panelModels.add(new PanelModel("My Groups",R.mipmap.ic_launcher,6));
-        panelModels.add(new PanelModel("Partners' Groups",R.mipmap.ic_launcher,7));
+        panelModels.add(new PanelModel("My Business","file:///android_asset/mybusiness.png",8));
+        panelModels.add(new PanelModel("Create Order","file:///android_asset/createorder.png",1));
+        panelModels.add(new PanelModel("Voucher","file:///android_asset/voucher.png",2));
+        panelModels.add(new PanelModel("Products Left","file:///android_asset/productleft.png",3));
+        panelModels.add(new PanelModel("Products","file:///android_asset/products.png",4));
+        panelModels.add(new PanelModel("Stocks","file:///android_asset/stock.png",5));
+        panelModels.add(new PanelModel("My Groups","file:///android_asset/mygroup.png",6));
+        panelModels.add(new PanelModel("Partners' Groups","file:///android_asset/partnergroup.png",7));
 
     }
-
 }

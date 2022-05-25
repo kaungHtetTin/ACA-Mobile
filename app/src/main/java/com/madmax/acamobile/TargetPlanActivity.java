@@ -105,6 +105,8 @@ public class TargetPlanActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(TargetPlanActivity.this,AddTargetPlanActivity.class);
+                intent.putExtra("group",false);
+                intent.putExtra("groupId","");
                 startActivity(intent);
             }
         });
@@ -169,13 +171,14 @@ public class TargetPlanActivity extends AppCompatActivity {
             adapter.notifyDataSetChanged();
             loading=true;
 
-        }catch (Exception e){}
+        }catch (Exception e){
+
+        }
     }
 
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-
 
         if(item.getItemId()==android.R.id.home){
             finish();

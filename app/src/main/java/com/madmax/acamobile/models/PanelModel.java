@@ -2,10 +2,10 @@ package com.madmax.acamobile.models;
 
 public class PanelModel {
     String title;
-    int src;
+    String src;
     int id;
 
-    public PanelModel(String title, int src,int id) {
+    public PanelModel(String title, String src,int id) {
         this.title = title;
         this.src = src;
         this.id=id;
@@ -15,7 +15,7 @@ public class PanelModel {
         return title;
     }
 
-    public int getSrc() {
+    public String getSrc() {
         return src;
     }
 

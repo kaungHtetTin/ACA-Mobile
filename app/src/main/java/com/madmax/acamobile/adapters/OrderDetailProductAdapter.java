@@ -84,11 +84,11 @@ public class OrderDetailProductAdapter extends RecyclerView.Adapter<OrderDetailP
             ArrayList<Product> products=stock.getProducts();
             for(int i=0;i<products.size();i++){
                 Product product=products.get(i);
-
+                int totalQty=model.getQuantity()+model.getFoc();
                 if(product.getProduct_id()==model.getProduct_id()){
                     int left=product.getCount();
                     holder.tv_left.setText(left+"");
-                    if(model.getQuantity()>left){
+                    if(totalQty>left){
                         holder.mLayout.setBackgroundColor(c.getResources().getColor(R.color.light_yellow));
                         OrderDetailActivity.isEnoughToSend=false;
                     }else{

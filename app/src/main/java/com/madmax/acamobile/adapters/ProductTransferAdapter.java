@@ -99,7 +99,7 @@ public class ProductTransferAdapter extends RecyclerView.Adapter<ProductTransfer
                         case MotionEvent.ACTION_DOWN:
                             isPressed=true;
                             Log.e("Action ","Press");
-                            transfer(holder.tv_target, holder.tv_initial, targetQty,initialQty,POSITION);
+                            transfer2(holder.tv_target, holder.tv_initial,targetQty,initialQty,POSITION);
                             break;
 
                     }
@@ -126,6 +126,33 @@ public class ProductTransferAdapter extends RecyclerView.Adapter<ProductTransfer
 
                     initialProducts.get(position[0]).setCount(initial[0]);
                     targetProducts.get(position[0]).setCount(target[0]);
+                    initialProducts.get(position[0]).setQtyChange(true);
+                    targetProducts.get(position[0]).setQtyChange(true);
+                    try {
+                        Thread.sleep(100);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+
+                }
+            }
+        });
+        t.start();
+
+    }
+
+    private void transfer2(TextView tv1, TextView tv2, int[] initial, int[] target,int [] position){
+        Thread t=new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (isPressed && initial[0]!=0){
+                    initial[0]--;
+                    target[0]++;
+                    tv1.setText(initial[0]+"");
+                    tv2.setText(target[0]+"");
+
+                    initialProducts.get(position[0]).setCount(target[0]);
+                    targetProducts.get(position[0]).setCount(initial[0]);
                     initialProducts.get(position[0]).setQtyChange(true);
                     targetProducts.get(position[0]).setQtyChange(true);
                     try {

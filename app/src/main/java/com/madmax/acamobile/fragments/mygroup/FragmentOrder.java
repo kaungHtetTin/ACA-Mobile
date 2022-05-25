@@ -50,7 +50,6 @@ public class FragmentOrder extends Fragment {
     Executor postExecutor;
     String userId;
 
-
     String groupId;
     int isSoldOut;
 

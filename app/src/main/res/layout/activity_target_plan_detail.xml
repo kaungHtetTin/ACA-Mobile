@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".TargetPlanDetailActivity">
 
-
     <RelativeLayout
         android:id="@+id/chart_layout"
         android:layout_width="match_parent"
@@ -27,7 +26,6 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/tv_header"
             android:layout_marginStart="15dp"
-            android:text="From May 1,2020  To June 31,2020"
             android:textColor="@color/my_text_color"
             android:textStyle="bold"
             android:layout_marginTop="7dp"/>

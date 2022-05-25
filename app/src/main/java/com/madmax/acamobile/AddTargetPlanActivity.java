@@ -27,14 +27,16 @@ import java.util.concurrent.Executor;
 
 public class AddTargetPlanActivity extends AppCompatActivity {
 
-    TextView tv_startDate,tv_endDate;
+    TextView tv_startDate,tv_endDate,tv_header;
     Button bt_create;
     ProgressBar pb;
     SharedPreferences sharedPreferences;
     String userId,authToken;
-
     long startDate=0,endDate=0;
     Executor postExecutor;
+
+    boolean groupUpdate;
+    String groupId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,18 +47,33 @@ public class AddTargetPlanActivity extends AppCompatActivity {
         userId=sharedPreferences.getString("userId",null);
         authToken=sharedPreferences.getString("authToken",null);
         postExecutor= ContextCompat.getMainExecutor(this);
+
         Objects.requireNonNull(getSupportActionBar()).setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        setTitle("Create Plan");
+
+        groupUpdate=getIntent().getExtras().getBoolean("group",false);
+        groupId=getIntent().getExtras().getString("groupId","");
 
         setUpView();
     }
 
     private void setUpView(){
+        tv_header=findViewById(R.id.tv_header);
         tv_startDate=findViewById(R.id.tv_startDate);
         tv_endDate=findViewById(R.id.tv_endDate);
         bt_create=findViewById(R.id.bt_create);
         pb=findViewById(R.id.pb);
+
+        if(groupUpdate){
+            tv_header.setText("Update group target plan");
+            setTitle("Update Plan");
+            userId=groupId;
+            bt_create.setText("Update");
+        }else{
+            tv_header.setText("Create new target plan");
+            setTitle("Create Plan");
+            bt_create.setText("Create");
+        }
 
         tv_startDate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,23 +130,21 @@ public class AddTargetPlanActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(startDate!=0&&endDate!=0){
-                    createNewTargetPlan();
+                   if(groupUpdate){
+                        createNewTargetPlan(Routing.UPDATE_GROUP_TARGET_PLAN);
+                   }else {
+                       createNewTargetPlan(Routing.ADD_TARGET_PLAN);
+                   }
+                }else{
+                    Toast.makeText(getApplicationContext(),"Select all dates",Toast.LENGTH_SHORT).show();
                 }
             }
         });
 
     }
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if(item.getItemId()==android.R.id.home){
-            finish();
-        }
-        return super.onOptionsItemSelected(item);
-    }
 
-
-    private void createNewTargetPlan(){
+    private void createNewTargetPlan(String url){
         pb.setVisibility(View.VISIBLE);
         if(userId!=null){
             new Thread(() -> {
@@ -160,7 +175,7 @@ public class AddTargetPlanActivity extends AppCompatActivity {
                         pb.setVisibility(View.GONE);
 
                     }
-                }).url(Routing.ADD_TARGET_PLAN)
+                }).url(url)
                         .field("user_id",userId)
                         .field("start_date",startDate+"")
                         .field("end_date",endDate+"");
@@ -170,5 +185,14 @@ public class AddTargetPlanActivity extends AppCompatActivity {
         }else{
             new AuthChecker(this).logout();
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        if(item.getItemId()==android.R.id.home){
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

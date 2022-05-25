@@ -1,18 +1,17 @@
 package com.madmax.acamobile;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
-
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.XAxis;
@@ -26,10 +25,9 @@ import com.madmax.acamobile.app.Initializer;
 import com.madmax.acamobile.app.MyHttp;
 import com.madmax.acamobile.app.Routing;
 import com.madmax.acamobile.models.ProductModel;
-
 import org.json.JSONObject;
-
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.concurrent.Executor;
 
 public class TargetPlanDetailActivity extends AppCompatActivity {
@@ -49,6 +47,9 @@ public class TargetPlanDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_target_plan_detail);
         postExecutor= ContextCompat.getMainExecutor(this);
+
+        Objects.requireNonNull(getSupportActionBar()).setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         targetPlanId=getIntent().getExtras().getInt("targetPlanID");
         startDate=getIntent().getExtras().getLong("startDate");
@@ -148,6 +149,19 @@ public class TargetPlanDetailActivity extends AppCompatActivity {
 
         }catch (Exception e){
             Log.e("TargetCharErr ",e.toString());
+            pb.setVisibility(View.GONE);
+            chart_layout.setVisibility(View.VISIBLE);
+
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+
+        if(item.getItemId()==android.R.id.home){
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

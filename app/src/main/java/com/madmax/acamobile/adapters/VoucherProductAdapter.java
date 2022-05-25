@@ -63,7 +63,6 @@ public class VoucherProductAdapter extends RecyclerView.Adapter<VoucherProductAd
         ProductModel model=data.get(position);
         holder.tv_product.setText(model.getProduct_name());
 
-
         ArrayList<Product> products=stock.getProducts();
         Product p = null;
         int qty=model.getQuantity();

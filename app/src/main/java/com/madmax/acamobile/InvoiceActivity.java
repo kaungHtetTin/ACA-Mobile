@@ -461,7 +461,7 @@ public class InvoiceActivity extends AppCompatActivity {
 
         try {
             JSONObject joMain=new JSONObject(response);
-            JSONObject joVoucher=joMain.getJSONObject("voucher");
+//            JSONObject joVoucher=joMain.getJSONObject("voucher");
 
             stock_name=joMain.getString("stock_name");  // use this
 

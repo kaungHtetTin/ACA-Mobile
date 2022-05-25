@@ -28,6 +28,7 @@ import com.madmax.acamobile.ProductListActivity;
 import com.madmax.acamobile.R;
 import com.madmax.acamobile.StockListActivity;
 import com.madmax.acamobile.VoucherActivity;
+import com.madmax.acamobile.app.AppUtils;
 import com.madmax.acamobile.models.PanelModel;
 import java.util.ArrayList;
 import java.util.concurrent.Executor;
@@ -69,8 +70,9 @@ public class MainPanelAdapter extends RecyclerView.Adapter<MainPanelAdapter.Hold
 
         try{
             PanelModel model=data.get(position);
-            holder.iv.setImageResource(model.getSrc());
             holder.tv.setText(model.getTitle());
+
+            AppUtils.setPhotoFromRealUrl(holder.iv,model.getSrc());
 
         }catch (Exception e){
             Toast.makeText(c,e.toString(),Toast.LENGTH_SHORT).show();

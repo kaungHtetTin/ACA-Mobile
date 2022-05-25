@@ -131,5 +131,6 @@
                 android:textSize="18sp"
                 app:drawableStartCompat="@drawable/ic_baseline_business_center_24" />
         </androidx.cardview.widget.CardView>
+
     </LinearLayout>
 </ScrollView>

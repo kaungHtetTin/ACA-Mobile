@@ -136,6 +136,51 @@
 
             </LinearLayout>
 
+            <RelativeLayout
+                android:id="@+id/target_layout"
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_target_plan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toStartOf="@id/ibt_plan_update"
+                    android:layout_alignParentStart="true"
+                    android:textColor="@color/my_text_color"
+                    android:padding="2dp"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tv_target_hint"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="2dp"
+                    android:layout_below="@id/tv_target_plan"
+                    android:text="Target Plan"/>
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_below="@id/tv_target_hint"
+                    android:background="#ccc" />
+
+                <ImageButton
+                    android:id="@+id/ibt_plan_update"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="15dp"
+                    android:background="@drawable/bg_circular_transparent"
+                    android:src="@drawable/ic_baseline_edit_24"/>
+
+            </RelativeLayout>
+
             <LinearLayout
                 android:id="@+id/delete_layout"
                 android:layout_width="match_parent"

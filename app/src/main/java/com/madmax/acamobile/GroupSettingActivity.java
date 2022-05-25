@@ -19,8 +19,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,14 +36,19 @@ import com.madmax.acamobile.app.Routing;
 
 import org.json.JSONObject;
 
+import java.util.Calendar;
+import java.util.TimeZone;
 import java.util.concurrent.Executor;
 
 public class GroupSettingActivity extends AppCompatActivity {
 
     ImageView iv_group_small,iv_collapse;
+    RelativeLayout target_layout;
     LinearLayout name_layout,delete_layout,date_layout,description_layout;
-    TextView tv_name,tv_description,tv_date;
+    TextView tv_name,tv_description,tv_date,tv_target_plan;
     FloatingActionButton fab;
+    ImageButton ibt_plan_update;
+
     Executor postExecutor;
     Toolbar toolbar;
     CollapsingToolbarLayout toolbarLayout;
@@ -69,11 +76,14 @@ public class GroupSettingActivity extends AppCompatActivity {
         name_layout=findViewById(R.id.name_layout);
         delete_layout=findViewById(R.id.delete_layout);
         date_layout=findViewById(R.id.date_layout);
+        target_layout=findViewById(R.id.target_layout);
         description_layout=findViewById(R.id.description_layout);
         tv_name=findViewById(R.id.tv_name);
         tv_description=findViewById(R.id.tv_description);
         tv_date=findViewById(R.id.tv_date);
+        tv_target_plan=findViewById(R.id.tv_target_plan);
         fab=findViewById(R.id.fab);
+        ibt_plan_update=findViewById(R.id.ibt_plan_update);
         toolbar=findViewById(R.id.toolbar);
 
         toolbarLayout=findViewById(R.id.ctb);
@@ -147,6 +157,16 @@ public class GroupSettingActivity extends AppCompatActivity {
                     }
                 });
                 myDialog.showMyDialog();
+            }
+        });
+
+        ibt_plan_update.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(GroupSettingActivity.this,AddTargetPlanActivity.class);
+                intent.putExtra("group",true);
+                intent.putExtra("groupId",MyGroupDetailActivity.groupId);
+                startActivity(intent);
             }
         });
     }
@@ -265,6 +285,44 @@ public class GroupSettingActivity extends AppCompatActivity {
 
             tv_date.setText(AppUtils.formatTime(time));
             toolbarLayout.setTitle(name);
+
+            if(jo.has("target_plan")){
+                JSONObject joTarget=jo.getJSONObject("target_plan");
+
+
+                long startDate=joTarget.getLong("start_date")*1000;
+                long endDate=joTarget.getLong("end_date")*1000;
+                int plan_id=joTarget.getInt("target_plan_id");
+
+                Calendar startCalendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
+                startCalendar.setTimeInMillis(startDate);
+                int startDay=startCalendar.get(Calendar.DAY_OF_MONTH);
+                int startMonth=startCalendar.get(Calendar.MONTH);
+                int startYear=startCalendar.get(Calendar.YEAR);
+
+                Calendar endCalendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
+                endCalendar.setTimeInMillis(endDate);
+                int endDay=endCalendar.get(Calendar.DAY_OF_MONTH);
+                int endMonth=endCalendar.get(Calendar.MONTH);
+                int endYear=endCalendar.get(Calendar.YEAR);
+
+                String plan="From "+ AppUtils.month[startMonth] +" "+startDay+", "+startYear+"    To "+AppUtils.month[endMonth]+" "+endDay+", "+endYear;
+                tv_target_plan.setText(plan);
+
+                target_layout.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent=new Intent(GroupSettingActivity.this, TargetPlanDetailActivity.class);
+                        intent.putExtra("startDate",startDate);
+                        intent.putExtra("endDate",endDate);
+                        intent.putExtra("targetPlanID",plan_id);
+                        startActivity(intent);
+                    }
+                });
+
+            }else{
+                tv_target_plan.setText("No target Plan");
+            }
 
         }catch (Exception e){}
     }

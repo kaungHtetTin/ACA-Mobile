@@ -262,6 +262,45 @@
                     android:background="#ccc" />
             </LinearLayout>
 
+            <TextView
+                android:text="Target Plan Vs Order Rate"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="15dp"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="@color/color_on_primary"/>
+
+            <LinearLayout
+                android:id="@+id/target_layout"
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/my_text_color"
+                    android:padding="2dp"
+                    android:text="Target Plan"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="2dp"
+                    android:text="Tap to view target plan and ordering"
+                    />
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="5dp"
+                    android:background="#ccc" />
+            </LinearLayout>
+
 
             <TextView
                 android:text="Filtering"
