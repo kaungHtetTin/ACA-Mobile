@@ -20,9 +20,15 @@
         android:theme="@style/Theme.BusinessMaster"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".AboutGroupActivity"
-            android:theme="@style/Theme.MainActivity.NoActionBar"
+            android:name=".ForgetPasswordActivity"
             android:exported="false" />
+        <activity
+            android:name=".ResetPasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AboutGroupActivity"
+            android:exported="false"
+            android:theme="@style/Theme.MainActivity.NoActionBar" />
         <activity
             android:name=".StatisticalChartActivity"
             android:exported="false" />
@@ -140,7 +146,8 @@
             android:theme="@style/Theme.BusinessMaster.NoActionBar" />
         <activity
             android:name=".SplashScreenActivity"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/Theme.BusinessMaster.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -151,6 +158,14 @@
             android:name=".MainActivity"
             android:exported="true"
             android:theme="@style/Theme.MainActivity.NoActionBar" />
+
+        <service
+            android:name=".service.MyFirebaseMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

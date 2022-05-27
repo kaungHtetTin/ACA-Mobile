@@ -29,39 +29,15 @@
             android:layout_marginBottom="15dp"
             android:layout_height="80dp">
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/iv_profile"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="10dp" />
-
             <TextView
-                android:id="@+id/tv_header2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignTop="@id/iv_profile"
-                android:layout_marginStart="10dp"
-                android:layout_toEndOf="@id/iv_profile"
-                android:text="Business Master"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                android:textColor="?android:textColorPrimary"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/tv_phone"
+                android:id="@+id/tv_developer_contact"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/tv_header2"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="8dp"
-                android:layout_toEndOf="@id/iv_profile"
-                android:text="Make Your Business More Successful"
-                android:textColor="#555"
-                android:textStyle="italic" />
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:text="Contact@Developer"
+                android:layout_marginBottom="20dp"
+                android:textColor="@color/color_on_primary" />
 
         </RelativeLayout>
     </com.google.android.material.navigation.NavigationView>

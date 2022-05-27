@@ -33,16 +33,9 @@ public class SplashScreenActivity extends AppCompatActivity {
         sharedPreferences=getSharedPreferences("GeneralData", Context.MODE_PRIVATE);
         editor=sharedPreferences.edit();
         setContentView(R.layout.activity_splash_screen);
+        
         getMessagingToken();
-
-        MDetect mDetect=new MDetect();
-        mDetect.init(this);
         new Initializer(this).initialize();
-
-        if(mDetect.isUnicode()) Toast.makeText(this, "Unicode", Toast.LENGTH_SHORT).show();
-        else Toast.makeText(this, "ZG Code", Toast.LENGTH_SHORT).show();
-
-
         setScreen();
 
     }

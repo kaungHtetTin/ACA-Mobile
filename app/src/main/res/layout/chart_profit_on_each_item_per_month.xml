@@ -7,7 +7,7 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
+        android:layout_margin="10dp"
         app:cardCornerRadius="3dp"
         android:elevation="2dp">
         <RelativeLayout
@@ -43,12 +43,12 @@
                     android:id="@+id/tv_from"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="May 1, 2022"
                     android:layout_below="@id/tv_from_header"
-                    android:textColor="@color/white"
+                    android:layout_marginStart="10dp"
                     android:drawableStart="@drawable/ic_baseline_arrow_drop_down_24"
-                    android:textSize="14sp"
-                    android:layout_marginStart="10dp"/>
+                    android:text="May 1, 2022"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
 
 
                 <TextView
@@ -108,38 +108,36 @@
                 android:id="@+id/tv_investment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Total Investment"
+                android:layout_below="@id/tv_total"
                 android:layout_marginStart="5dp"
-                android:textSize="11sp"
-                android:layout_below="@id/tv_total"/>
+                android:text="Total Investment"
+                android:textSize="11sp" />
 
             <TextView
                 android:id="@+id/tv_sale"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Total Sale"
-                android:layout_marginStart="15dp"
-                android:textSize="11sp"
+                android:layout_below="@id/tv_total"
+                android:layout_marginStart="40dp"
                 android:layout_toEndOf="@id/tv_investment"
-                android:layout_below="@id/tv_total"/>
+                android:text="Total Sale"
+                android:textSize="11sp" />
 
             <TextView
                 android:id="@+id/tv_extra_cost"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/tv_total_investment"
+                android:layout_marginStart="5dp"
                 android:text="Total Extra Cost"
-                android:layout_marginStart="15dp"
-                android:textSize="11sp"
-                android:layout_toEndOf="@id/tv_sale"
-                android:layout_below="@id/tv_total"/>
+                android:textSize="11sp" />
 
             <TextView
                 android:id="@+id/tv_profit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/tv_total"
-                android:layout_toEndOf="@id/tv_extra_cost"
-                android:layout_marginStart="15dp"
+                android:layout_below="@id/tv_total_sale"
+                android:layout_alignStart="@id/tv_sale"
                 android:text="Profit"
                 android:textSize="11sp" />
 
@@ -148,11 +146,11 @@
                 android:id="@+id/tv_total_investment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="10000"
-                android:layout_marginStart="5dp"
-                android:textColor="@color/color_on_primary"
                 android:layout_below="@id/tv_investment"
-                android:layout_marginBottom="15dp"/>
+                android:layout_marginStart="5dp"
+                android:layout_marginBottom="15dp"
+                android:text="10000"
+                android:textColor="@color/color_on_primary" />
 
             <TextView
                 android:id="@+id/tv_total_sale"
@@ -171,7 +169,7 @@
                 android:text="10000"
                 android:layout_alignStart="@id/tv_extra_cost"
                 android:textColor="@color/color_on_primary"
-                android:layout_below="@id/tv_investment"
+                android:layout_below="@id/tv_extra_cost"
                 android:layout_marginBottom="15dp"/>
 
             <TextView
@@ -181,7 +179,7 @@
                 android:text="10000"
                 android:layout_alignStart="@id/tv_profit"
                 android:textColor="@color/color_on_primary"
-                android:layout_below="@id/tv_investment"
+                android:layout_below="@id/tv_profit"
                 android:layout_marginBottom="15dp"/>
         </RelativeLayout>
     </androidx.cardview.widget.CardView>

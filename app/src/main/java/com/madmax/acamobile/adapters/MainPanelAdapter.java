@@ -110,14 +110,7 @@ public class MainPanelAdapter extends RecyclerView.Adapter<MainPanelAdapter.Hold
                             Intent intent3=new Intent(c, ProductLeftActivity.class);
                             c.startActivity(intent3);
                             break;
-                        case 4 :
-                            Intent intent4=new Intent(c, ProductListActivity.class);
-                            c.startActivity(intent4);
-                            break;
-                        case 5:
-                            Intent intent5=new Intent(c, StockListActivity.class);
-                            c.startActivity(intent5);
-                            break;
+
                         case 6:
                             Intent intent6=new Intent(c, MyGroupActivity.class);
                             c.startActivity(intent6);

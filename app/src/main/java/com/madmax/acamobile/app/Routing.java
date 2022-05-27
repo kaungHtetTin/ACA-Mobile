@@ -1,7 +1,7 @@
 package com.madmax.acamobile.app;
 
 public class Routing {
-    public static String DOMAIN="http://192.168.104.17/";
+    public static String DOMAIN="http://192.168.6.17/";
     public static final String API=DOMAIN+"acamobile/api/";
     public static final String PROFILE_URL=DOMAIN+"acamobile/uploads/profiles/";
     public static final String GROUP_COVER_URL=DOMAIN+"acamobile/uploads/groups/";
@@ -62,6 +62,7 @@ public class Routing {
     public static final String GET_SALE=API+"businesses/getsales.php";
     public static final String GET_SALE_DETAIL=API+"businesses/getsaledetail.php";
     public static final String GET_ORDER_BY_AGENT=API+"businesses/getorderbyagent.php";
+    public static final String CANCEL_ORDER_BY_ADMIN=API+"businesses/cancelorder_admin.php";
 
     //target plan
     public static final String ADD_TARGET_PLAN=API+"targetplan/add.php";
@@ -69,6 +70,7 @@ public class Routing {
     public static final String UPDATE_TARGET_PLAN_ITEM_COUNT=API+"targetplan/updateitemquantity.php";
     public static final String GET_TARGET_PLAN_DETAILS=API+"targetplan/getdetails.php";
     public static final String UPDATE_GROUP_TARGET_PLAN=API+"targetplan/updategrouptargetplan.php";
+    public static final String DELETE_TARGET_PLAN=API+"targetplan/delete.php";
 
 
     //chart
@@ -76,6 +78,12 @@ public class Routing {
     public static final String CHART_PROFIT_PER_MONTH=API+"chart/profitpermonth.php";
     public static final String CHART_RETAIL_AND_ORDER=API+"chart/retailandagent.php";
     public static final String CHART_SALE_RATE_IN_A_PRODUCT=API+"chart/salerateforaitem.php";
+    public static final String CHART_GROUP_SALE_AND_ORDER=API+"chart/group/orderandsale.php";
+    public static final String CHART_GROUP_SALE_RATE_IN_A_PRODUCT=API+"chart/group/salerateforaitem.php";
+    public static final String CHART_GROUP_FILTER_ORDER_RATE=API+"chart/group/filter_order_rate.php";
 
-
+    //password
+    public static final String CHECK_CURRENT_PASSWORD=API+"users/checkpassword.php";
+    public static final String RESET_PASSWORD_BY_USER=API+"users/resetpassword.php";
+    public static final String GENERATE_OTP=API+"users/generate_otp.php";
 }

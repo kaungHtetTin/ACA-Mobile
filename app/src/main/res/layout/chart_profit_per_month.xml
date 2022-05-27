@@ -7,7 +7,7 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
+        android:layout_margin="10dp"
         app:cardCornerRadius="3dp"
         android:elevation="2dp">
         <RelativeLayout
@@ -117,11 +117,11 @@
                 android:id="@+id/tv_sale"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Total Sale"
-                android:layout_marginStart="15dp"
-                android:textSize="11sp"
+                android:layout_below="@id/tv_total"
+                android:layout_marginStart="40dp"
                 android:layout_toEndOf="@id/tv_investment"
-                android:layout_below="@id/tv_total"/>
+                android:text="Total Sale"
+                android:textSize="11sp" />
 
 
             <TextView
@@ -129,8 +129,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tv_total"
+                android:layout_marginStart="40dp"
                 android:layout_toEndOf="@id/tv_sale"
-                android:layout_marginStart="15dp"
                 android:text="Profit"
                 android:textSize="11sp" />
 

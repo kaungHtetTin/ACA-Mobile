@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.data.Entry;
+import com.madmax.acamobile.app.Routing;
 import com.madmax.acamobile.charts.ProfitPerItem;
 import com.madmax.acamobile.charts.ProfitPerMonth;
 import com.madmax.acamobile.charts.RetailAndAgentRate;
@@ -52,7 +53,7 @@ public class StatisticalChartActivity extends AppCompatActivity {
     private void setUpView(){
         mLayout=findViewById(R.id.mLayout);
 
-        SaleAndOrderRate saleAndOrderRate=new SaleAndOrderRate(this,fragmentManager,userId);
+        SaleAndOrderRate saleAndOrderRate=new SaleAndOrderRate(this,fragmentManager,userId, Routing.CHART_SALE_AND_ORDER+"?",false);
         saleAndOrderRate.invisibleTVSeeMore();
         mLayout.addView(saleAndOrderRate.getView());
 
@@ -65,7 +66,7 @@ public class StatisticalChartActivity extends AppCompatActivity {
         ProfitPerMonth profitPerMonth=new ProfitPerMonth(userId,this);
         mLayout.addView(profitPerMonth.getView());
 
-        SaleRateInAProduct saleRateInAProduct=new SaleRateInAProduct(userId,this);
+        SaleRateInAProduct saleRateInAProduct=new SaleRateInAProduct(userId,this,Routing.CHART_SALE_RATE_IN_A_PRODUCT+"?",false);
         mLayout.addView(saleRateInAProduct.getView());
 
     }

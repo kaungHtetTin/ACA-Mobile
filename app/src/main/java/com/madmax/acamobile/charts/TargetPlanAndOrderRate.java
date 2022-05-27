@@ -39,7 +39,7 @@ import java.util.concurrent.Executor;
 public class TargetPlanAndOrderRate {
     LineChart lineChart;
     ProgressBar pb;
-    TextView tv_to,tv_from;
+    TextView tv_to,tv_from,tv_target_point,tv_rewarded_point;
 
     String groupId,memberId;
     Executor postExecutor;
@@ -67,6 +67,8 @@ public class TargetPlanAndOrderRate {
         view=mInflater.inflate(R.layout.chart_targetplan_and_order,null);
         tv_from=view.findViewById(R.id.tv_from);
         tv_to=view.findViewById(R.id.tv_to);
+        tv_target_point=view.findViewById(R.id.tv_total_target_point);
+        tv_rewarded_point=view.findViewById(R.id.tv_total_rewarded_point);
 
         lineChart=view.findViewById(R.id.lineChart);
         pb=view.findViewById(R.id.pb);
@@ -116,12 +118,17 @@ public class TargetPlanAndOrderRate {
             JSONObject joPlan=joMain.getJSONObject("target_plan");
             setUpPlanRange(joPlan);
 
+            float total_target_point=0;
+            float total_rewarded_point=0;
+
             for (int i = 0; i < Initializer.products.size(); i++) {
                 ProductModel model = Initializer.products.get(i);
                 String productId = model.getProduct_id() + "";
 
                 if (joTarget.has(productId)) {
                     int count = joTarget.getJSONObject(productId).getInt("count");
+                    float point=model.getPoint()*count;
+                    total_target_point+=point;
                     targetProducts.add(new Entry(i, count));
 
                 } else {
@@ -131,6 +138,8 @@ public class TargetPlanAndOrderRate {
                 if(joOrder!=null){
                     if (joOrder.has(productId)) {
                         int count = joOrder.getJSONObject(productId).getInt("count");
+                        float point=model.getPoint()*count;
+                        total_rewarded_point+=point;
                         orderProducts.add(new Entry(i, count));
                     } else {
                         orderProducts.add(new Entry(i, 0));
@@ -140,6 +149,9 @@ public class TargetPlanAndOrderRate {
                 }
             }
 
+
+            tv_rewarded_point.setText(total_rewarded_point+"");
+            tv_target_point.setText(total_target_point+"");
 
             LineDataSet setComp1 = new LineDataSet(targetProducts, "Target Plan");
             setComp1.setColor(Color.RED);

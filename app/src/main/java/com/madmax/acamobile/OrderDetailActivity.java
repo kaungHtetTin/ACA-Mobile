@@ -61,7 +61,7 @@ public class OrderDetailActivity extends AppCompatActivity {
     TextView tv_total_amount,tv_total_point,tv_voucher_id,tv_total_extra_cost,tv_order_by,
             tv_group_name,tv_order_detail,tv_transfer;
     Spinner sp_stock;
-    Button bt_sent;
+    Button bt_sent,bt_cancel;
     RecyclerView recyclerView;
     ArrayList<OrderModel> orders=new ArrayList<>();
 
@@ -140,6 +140,7 @@ public class OrderDetailActivity extends AppCompatActivity {
         tv_left_header=findViewById(R.id.tv_left_header);
         sp_stock=findViewById(R.id.sp_stock);
         bt_sent=findViewById(R.id.bt_sent_order);
+        bt_cancel=findViewById(R.id.bt_cancel);
         tv_total_extra_cost=findViewById(R.id.tv_total_extra_cost);
         tv_date=findViewById(R.id.tv_date);
         tv_order_by=findViewById(R.id.tv_order_by);
@@ -157,6 +158,13 @@ public class OrderDetailActivity extends AppCompatActivity {
                 }else {
                     Toast.makeText(getApplicationContext(), "Not enough product in the stock", Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+
+        bt_cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                cancelOrder();
             }
         });
 
@@ -338,6 +346,7 @@ public class OrderDetailActivity extends AppCompatActivity {
    private void setOrderStatus(JSONObject jo) throws JSONException{
        JSONObject joOrder=jo.getJSONObject("order");
        isSoldOut=joOrder.getInt("is_sold_out")==1;
+       boolean isReceived=joOrder.getInt("is_received")==1;
        String extraCost=joOrder.getString("admin_extra_cost");
        tv_total_extra_cost.setText(extraCost);
        if(isSoldOut){
@@ -345,6 +354,12 @@ public class OrderDetailActivity extends AppCompatActivity {
            tv_left_header.setVisibility(View.GONE);
            tv_left_footer.setVisibility(View.GONE);
            bt_sent.setEnabled(false);
+           bt_cancel.setVisibility(View.VISIBLE);
+
+           if(isReceived){
+               bt_cancel.setEnabled(false);
+           }
+
        }else{
            setStockSpinner();
        }
@@ -470,6 +485,49 @@ public class OrderDetailActivity extends AppCompatActivity {
                         .field("user_id", currentUserId)
                         .field("auth_token", authToken)
                         .field("stock_id",selectedStockId+"")
+                        .field("voucher_id",voucher_id);
+                myHttp.runTask();
+            }).start();
+        }
+    }
+
+    private void cancelOrder(){
+        if (currentUserId != null && authToken != null) {
+            pb.setVisibility(View.VISIBLE);
+            new Thread(() -> {
+                MyHttp myHttp = new MyHttp(MyHttp.RequesMethod.POST, new MyHttp.Response() {
+                    @Override
+                    public void onResponse(String response) {
+                        Log.e("cancel Order ",response);
+                        postExecutor.execute(new Runnable() {
+                            @Override
+                            public void run() {
+                                try {
+                                    JSONObject jo = new JSONObject(response);
+                                    boolean isSuccess = jo.getString("status").equals("success");
+                                    if (isSuccess) {
+                                        finish();
+                                    } else {
+                                        pb.setVisibility(View.GONE);
+                                        Toast.makeText(getApplicationContext(), "Update fail! Try again.", Toast.LENGTH_SHORT).show();
+                                    }
+
+                                } catch (Exception e) {
+                                    Log.e("UpdateResJSONErr ",e.toString());
+                                }
+                            }
+                        });
+
+                    }
+
+                    @Override
+                    public void onError(String msg) {
+                        Log.e("CancelOrder Fail ",msg);
+
+                    }
+                }).url(Routing.CANCEL_ORDER_BY_ADMIN)
+                        .field("user_id", currentUserId)
+                        .field("auth_token", authToken)
                         .field("voucher_id",voucher_id);
                 myHttp.runTask();
             }).start();

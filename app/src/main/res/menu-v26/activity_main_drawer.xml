@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+
+        <item android:id="@+id/nav_stock"
+            android:icon="@drawable/ic_baseline_business_center_24"
+            android:iconTint="#999"
+            android:title="Stocks"/>
+
+        <item android:id="@+id/nav_product"
+            android:icon="@drawable/ic_baseline_diamond_24"
+            android:iconTint="#999"
+            android:title="Products"/>
+
+        <item android:id="@+id/nav_target_plan"
+            android:icon="@drawable/nav_target_plan"
+            android:iconTint="#999"
+            android:title="Target Plan"/>
+
+        <item
+            android:id="@+id/nav_invoice_edit"
+            android:iconTint="#999"
+            android:icon="@drawable/nav_edit_invoice"
+            android:title="Edit Invoice" />
+
+        <item
+            android:id="@+id/nav_reset_password"
+            android:iconTint="#999"
+            android:icon="@drawable/ic_baseline_lock_24"
+            android:title="Reset Password" />
+
+        <item
+            android:id="@+id/nav_about"
+            android:iconTint="#999"
+            android:icon="@drawable/ic_baseline_info_24"
+            android:title="About" />
+
+
+        <item
+            android:id="@+id/nav_logOut"
+            android:iconTint="#999"
+            android:icon="@drawable/nav_log_out"
+            android:title="Log Out" />
+
+    </group>
+</menu>

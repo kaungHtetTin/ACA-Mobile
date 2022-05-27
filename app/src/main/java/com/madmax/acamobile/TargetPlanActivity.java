@@ -117,6 +117,7 @@ public class TargetPlanActivity extends AppCompatActivity {
         page=1;
         loading=true;
         plans.clear();
+        adapter.notifyDataSetChanged();
         fetchPlans(1);
         super.onResume();
     }

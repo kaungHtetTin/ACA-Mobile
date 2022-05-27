@@ -36,7 +36,7 @@ public class AppUtils {
 
 
     public static String formatTime( long time){
-        SimpleDateFormat sdf = new SimpleDateFormat("MMM dd,yyyy HH:mm");
+        SimpleDateFormat sdf = new SimpleDateFormat("MMM dd, yyyy");
         Date resultdate = new Date(time);
         long currentTime=System.currentTimeMillis();
         long timeDifference=currentTime-time;

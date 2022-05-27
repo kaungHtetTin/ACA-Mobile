@@ -68,6 +68,7 @@ public class MyOrderActivity extends AppCompatActivity {
     protected void onResume() {
         page=1;
         vouchers.clear();
+        adapter.notifyDataSetChanged();
         fetchOrders(page);
         super.onResume();
     }

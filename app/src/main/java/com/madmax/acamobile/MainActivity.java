@@ -137,11 +137,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         });
 
 
-        SaleAndOrderRate saleAndOrderRate=new SaleAndOrderRate(this,getSupportFragmentManager(),userId);
+        SaleAndOrderRate saleAndOrderRate=new SaleAndOrderRate(this,getSupportFragmentManager(),userId,Routing.CHART_SALE_AND_ORDER+"?",false);
         chartLayout.addView(saleAndOrderRate.getView());
-
-
-
 
     }
 
@@ -151,9 +148,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         switch (id){
 
             case R.id.nav_logOut:
-
                 new AuthChecker(MainActivity.this).logout();
-
                 break;
             case R.id.nav_invoice_edit:
                 Intent intent3=new Intent(MainActivity.this,InvoiceEditActivity.class);
@@ -162,6 +157,22 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_target_plan:
                 Intent intent4=new Intent(MainActivity.this,TargetPlanActivity.class);
                 startActivity(intent4);
+                break;
+            case R.id.nav_stock:
+                Intent intent5=new Intent(MainActivity.this,StockListActivity.class);
+                startActivity(intent5);
+                break;
+            case R.id.nav_product:
+                Intent intent6=new Intent(MainActivity.this, ProductListActivity.class);
+                startActivity(intent6);
+                break;
+            case R.id.nav_reset_password:
+                Intent intent7=new Intent(MainActivity.this,ResetPasswordActivity.class);
+                startActivity(intent7);
+                break;
+
+            case R.id.nav_about:
+
                 break;
         }
 
@@ -186,9 +197,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         panelModels.add(new PanelModel("My Business","file:///android_asset/mybusiness.png",8));
         panelModels.add(new PanelModel("Create Order","file:///android_asset/createorder.png",1));
         panelModels.add(new PanelModel("Voucher","file:///android_asset/voucher.png",2));
-        panelModels.add(new PanelModel("Products Left","file:///android_asset/productleft.png",3));
-        panelModels.add(new PanelModel("Products","file:///android_asset/products.png",4));
-        panelModels.add(new PanelModel("Stocks","file:///android_asset/stock.png",5));
+        panelModels.add(new PanelModel("Products Left","file:///android_asset/products.png",3));
         panelModels.add(new PanelModel("My Groups","file:///android_asset/mygroup.png",6));
         panelModels.add(new PanelModel("Partners' Groups","file:///android_asset/partnergroup.png",7));
 

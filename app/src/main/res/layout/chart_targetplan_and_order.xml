@@ -7,12 +7,12 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
+        android:layout_margin="10dp"
         app:cardCornerRadius="3dp"
         android:elevation="2dp">
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="300dp">
+            android:layout_height="wrap_content">
             <RelativeLayout
                 android:id="@+id/header_layout"
                 android:layout_width="match_parent"
@@ -75,7 +75,7 @@
             <com.github.mikephil.charting.charts.LineChart
                 android:id="@+id/lineChart"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="300dp"
                 android:layout_below="@id/header_layout" />
 
             <ProgressBar
@@ -87,6 +87,59 @@
                 android:layout_alignBottom="@id/lineChart"
                 android:layout_below="@id/header_layout"
                 />
+
+            <TextView
+                android:id="@+id/tv_point_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/lineChart"
+                android:layout_marginTop="15dp"
+                android:padding="5dp"
+                android:text="Points"
+                android:textColor="@color/color_on_primary"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_target_point"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Target Point"
+                android:layout_marginStart="5dp"
+                android:textSize="11sp"
+                android:layout_below="@id/tv_point_header"/>
+
+            <TextView
+                android:id="@+id/tv_rewarded_point"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rewarded Point"
+                android:layout_marginStart="40dp"
+                android:textSize="11sp"
+                android:layout_toEndOf="@id/tv_target_point"
+                android:layout_below="@id/tv_point_header"/>
+
+            <TextView
+                android:id="@+id/tv_total_target_point"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0.0"
+                android:layout_marginStart="5dp"
+                android:layout_below="@id/tv_target_point"
+                android:layout_marginBottom="20dp"
+                android:textColor="@color/color_on_primary"/>
+
+            <TextView
+                android:id="@+id/tv_total_rewarded_point"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_target_point"
+                android:text="0.0"
+
+                android:layout_marginBottom="15dp"
+                android:layout_alignStart="@id/tv_rewarded_point"
+                android:textColor="@color/color_on_primary"/>
+
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 </LinearLayout>

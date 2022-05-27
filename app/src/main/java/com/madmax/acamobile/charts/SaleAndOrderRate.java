@@ -58,13 +58,17 @@ public class SaleAndOrderRate{
     String userId;
     FragmentManager fragmentManager;
     Executor postExecutor;
+    String url;
+    boolean group;
 
-    public SaleAndOrderRate(Activity c,FragmentManager fragmentManager,String userId) {
+    public SaleAndOrderRate(Activity c,FragmentManager fragmentManager,String userId,String url,boolean group) {
         this.c = c;
         this.fragmentManager=fragmentManager;
         this.userId=userId;
         this.mInflater= LayoutInflater.from(c);
         postExecutor= ContextCompat.getMainExecutor(c);
+        this.url=url;
+        this.group=group;
         initializeView();
     }
 
@@ -154,6 +158,7 @@ public class SaleAndOrderRate{
             MyHttp myHttp=new MyHttp(MyHttp.RequesMethod.POST, new MyHttp.Response() {
                 @Override
                 public void onResponse(String response) {
+                    Log.e("SaleAOrderRate ",response);
                     postExecutor.execute(new Runnable() {
                         @Override
                         public void run() {
@@ -169,7 +174,7 @@ public class SaleAndOrderRate{
 
 
                 }
-            }).url(Routing.CHART_SALE_AND_ORDER+"?user_id="+userId+"&start_date="+start_time+"&end_date="+final_time);
+            }).url(url+"user_id="+userId+"&start_date="+start_time+"&end_date="+final_time);
 
             myHttp.runTask();
         }).start();
@@ -238,7 +243,7 @@ public class SaleAndOrderRate{
             // use the interface ILineDataSet
             List<ILineDataSet> dataSets = new ArrayList<ILineDataSet>();
             dataSets.add(setComp1);
-            dataSets.add(setComp2);
+            if(!group)dataSets.add(setComp2);
 
 
             LineData data = new LineData(dataSets);

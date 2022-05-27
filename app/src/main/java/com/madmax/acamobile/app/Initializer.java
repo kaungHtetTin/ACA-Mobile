@@ -38,6 +38,11 @@ public class Initializer {
     }
 
 
+    private void checkValidDate(){
+
+    }
+
+
 
     public void getStocks(GetStockCompleteListener listener){
         new Thread(() -> {
@@ -82,6 +87,7 @@ public class Initializer {
                         brands.clear();
                         JSONObject jo=new JSONObject(response);
                         JSONArray mainProductJSONArr=jo.getJSONArray("main_product");
+
                         for(int i=0;i<mainProductJSONArr.length();i++){
                             JSONObject jo2=mainProductJSONArr.getJSONObject(i);
                             String product_name=jo2.getString("product_name");

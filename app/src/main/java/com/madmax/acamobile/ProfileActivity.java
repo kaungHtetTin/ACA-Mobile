@@ -154,6 +154,7 @@ public class ProfileActivity extends AppCompatActivity {
                 Intent intent=new Intent(ProfileActivity.this,PlanAndOrderActivity.class);
                 intent.putExtra("memberId",memberId);
                 intent.putExtra("groupId",groupId);
+                intent.putExtra("filtering",false);
                 startActivity(intent);
             }
         });
@@ -217,13 +218,13 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-//                Intent intent=new Intent(ProfileActivity.this,FilterActivity.class);
-//                intent.putExtra("agentId",memberId);
-//                intent.putExtra("startDate",startDate);
-//                intent.putExtra("endDate",finalDate);
-//                intent.putExtra("is_sold_out",type);
-//                intent.putExtra("title",title);
-//                startActivity(intent);
+                Intent intent=new Intent(ProfileActivity.this,PlanAndOrderActivity.class);
+                intent.putExtra("memberId",memberId);
+                intent.putExtra("groupId",groupId);
+                intent.putExtra("start_date",startDate);
+                intent.putExtra("end_date",finalDate);
+                intent.putExtra("filtering",true);
+                startActivity(intent);
 
             }
         });
@@ -245,6 +246,7 @@ public class ProfileActivity extends AppCompatActivity {
 
                                 long date=Long.parseLong(jo.getJSONObject("joinDate").getString("time"));
                                 tv_date.setText(AppUtils.formatTime(date*1000));
+                                startDate=date*1000;
 
 
                             }catch (Exception e){}

@@ -75,7 +75,7 @@ public class PartnerGroupDetailActivity extends AppCompatActivity {
         TabLayout tabLayout=findViewById(R.id.tab_layout);
         ViewPageAdapter viewPageAdapter=new ViewPageAdapter(getSupportFragmentManager());
         viewPageAdapter.addFragments(new FragmentOverview(groupId),"Overview");
-        viewPageAdapter.addFragments(new FragmentOrder(groupId,0),"Order");
+        viewPageAdapter.addFragments(new FragmentOrder(groupId,0),"My Order");
         viewPageAdapter.addFragments(new FragmentOrder(groupId,1),"Received");
 
 

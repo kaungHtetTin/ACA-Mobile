@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SaleRateActivity">
+    <ScrollView
+        android:id="@+id/saleRateLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tv_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="20dp"
+                android:text="Target Plan And Order Rate"
+                android:textColor="@color/color_on_primary"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_plan_range"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_header"
+                android:layout_marginStart="15dp"
+                android:text="From May 1,2020  To June 31,2020"
+                android:textColor="@color/my_text_color"
+                android:textStyle="bold"
+                android:layout_marginTop="7dp"/>
+
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/lineChart"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:layout_below="@id/tv_plan_range"
+                android:layout_marginTop="20dp" />
+
+            <TextView
+                android:id="@+id/tv_header2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="20dp"
+                android:text="Target Plan And Order Rate"
+                android:layout_below="@id/lineChart"
+                android:textColor="@color/color_on_primary"
+                android:textSize="14sp" />
+
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:id="@+id/tv_interest"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_header2"
+                android:layout_marginStart="15dp"
+                android:padding="7dp"
+                android:gravity="center_vertical"
+                android:textColor="@color/my_text_color"
+                android:background="@drawable/bg_noti_blue_table_stoke"
+                android:text="Interest"/>
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:id="@+id/tv_interest_total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_header2"
+                android:padding="7dp"
+                android:layout_alignParentEnd="true"
+                android:gravity="center_vertical"
+                android:textColor="@color/my_text_color"
+                android:background="@drawable/bg_price_stroke"
+                android:layout_toEndOf="@id/tv_interest"
+                android:text="10000"/>
+
+            <TextView
+                android:id="@+id/tv_extra_cost"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_interest"
+                android:layout_marginStart="15dp"
+                android:padding="7dp"
+                android:gravity="center_vertical"
+                android:textColor="@color/my_text_color"
+                android:background="@drawable/bg_noti_blue_table_stoke"
+                android:text="Extra Cost"/>
+
+            <TextView
+                android:id="@+id/tv_extra_cost_total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_interest"
+                android:padding="7dp"
+                android:gravity="center_vertical"
+                android:textColor="@color/my_text_color"
+                android:layout_alignParentEnd="true"
+                android:background="@drawable/bg_price_stroke"
+                android:layout_toEndOf="@id/tv_extra_cost"
+                android:text="500"/>
+
+            <TextView
+                android:id="@+id/tv_sale_rate"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_extra_cost"
+                android:layout_marginStart="15dp"
+                android:padding="7dp"
+                android:gravity="center_vertical"
+                android:textColor="@color/my_text_color"
+                android:background="@drawable/bg_noti_blue_table_stoke"
+                android:text="Sale"/>
+
+            <TextView
+                android:id="@+id/tv_sale_rate_total"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_extra_cost"
+                android:padding="7dp"
+                android:gravity="center_vertical"
+                android:textColor="@color/my_text_color"
+                android:background="@drawable/bg_price_stroke"
+                android:layout_toEndOf="@id/tv_sale_rate"
+                android:layout_alignParentEnd="true"
+                android:text="150000"/>
+
+            <TextView
+                android:id="@+id/tv_profit"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_sale_rate"
+                android:layout_marginStart="15dp"
+                android:padding="7dp"
+                android:gravity="center_vertical"
+                android:textColor="@color/my_text_color"
+                android:background="@drawable/bg_noti_blue_table_stoke"
+                android:text="Profit"/>
+
+            <TextView
+                android:id="@+id/tv_profit_total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_sale_rate"
+                android:padding="7dp"
+                android:gravity="center_vertical"
+                android:textColor="@color/my_text_color"
+                android:background="@drawable/bg_stroke_green"
+                android:layout_alignParentEnd="true"
+                android:layout_toEndOf="@id/tv_profit"
+                android:text="50000"/>
+
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>

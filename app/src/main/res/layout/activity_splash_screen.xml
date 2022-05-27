@@ -6,11 +6,11 @@
     android:layout_height="match_parent"
     android:gravity="center"
     tools:context=".SplashScreenActivity">
-    <TextView
-        android:text="Loading...AcA"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="32dp"
-        android:gravity="center"/>
+
+    <ImageView
+        android:src="@drawable/ic_launcher"
+        android:layout_width="80dp"
+        android:layout_marginTop="-70dp"
+        android:layout_height="80dp"/>
 
 </LinearLayout>

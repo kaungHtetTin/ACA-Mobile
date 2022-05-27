@@ -27,6 +27,7 @@ import com.madmax.acamobile.app.AppUtils;
 import com.madmax.acamobile.app.Initializer;
 import com.madmax.acamobile.app.MyHttp;
 import com.madmax.acamobile.app.Routing;
+import com.madmax.acamobile.charts.FilteringChart;
 import com.madmax.acamobile.charts.TargetPlanAndOrderRate;
 import com.madmax.acamobile.models.ProductModel;
 
@@ -44,6 +45,7 @@ public class PlanAndOrderActivity extends AppCompatActivity {
 
     String groupId,memberId;
     LinearLayout mLayout;
+    boolean filtering;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +54,8 @@ public class PlanAndOrderActivity extends AppCompatActivity {
 
         groupId=getIntent().getExtras().getString("groupId");
         memberId=getIntent().getExtras().getString("memberId");
+        filtering=getIntent().getExtras().getBoolean("filtering",false);
+
 
 
         setTitle("Details");
@@ -64,8 +68,17 @@ public class PlanAndOrderActivity extends AppCompatActivity {
     private void setUpView(){
         mLayout=findViewById(R.id.mLayout);
 
-        TargetPlanAndOrderRate targetPlanAndOrderRate=new TargetPlanAndOrderRate(this,groupId,memberId);
-        mLayout.addView(targetPlanAndOrderRate.getView());
+        if(filtering){
+            long start_date=getIntent().getExtras().getLong("start_date");
+            long end_date=getIntent().getExtras().getLong("end_date");
+
+            FilteringChart filteringChart=new FilteringChart(groupId,memberId,start_date,end_date,this);
+            mLayout.addView(filteringChart.getView());
+
+        }else{
+            TargetPlanAndOrderRate targetPlanAndOrderRate=new TargetPlanAndOrderRate(this,groupId,memberId);
+            mLayout.addView(targetPlanAndOrderRate.getView());
+        }
 
     }
 

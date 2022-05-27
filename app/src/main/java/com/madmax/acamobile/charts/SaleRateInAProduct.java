@@ -64,13 +64,15 @@ public class SaleRateInAProduct {
     ArrayList<Entry> orders=new ArrayList<>();
 
     int product_id;
-
-    public SaleRateInAProduct(String userId, Activity c){
+    String url;
+    boolean group;
+    public SaleRateInAProduct(String userId, Activity c,String url,boolean group){
         this.userId = userId;
         this.c = c;
+        this.url=url;
+        this.group=group;
         this.mInflater= LayoutInflater.from(c);
         postExecutor= ContextCompat.getMainExecutor(c);
-
         setDefaultDate();
         initializeSpinnerArr();
 
@@ -112,7 +114,7 @@ public class SaleRateInAProduct {
 
 
                 }
-            }).url(Routing.CHART_SALE_RATE_IN_A_PRODUCT+"?user_id="+userId+"&start_date="+start_time+"&end_date="+final_time+"&product_id="+product_id);
+            }).url(url+"user_id="+userId+"&start_date="+start_time+"&end_date="+final_time+"&product_id="+product_id);
 
             myHttp.runTask();
         }).start();
@@ -178,7 +180,7 @@ public class SaleRateInAProduct {
 
             // use the interface ILineDataSet
             List<ILineDataSet> dataSets = new ArrayList<ILineDataSet>();
-            dataSets.add(setComp2);
+            if(!group)dataSets.add(setComp2);
             dataSets.add(setComp1);
 
 
