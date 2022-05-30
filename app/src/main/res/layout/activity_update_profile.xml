@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".UpdateProfileActivity">
+
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -195,6 +196,48 @@
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/official_id_layout"
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="20dp"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/iv_official_id"
+                    android:src="@drawable/ic_baseline_how_to_reg_24"
+                    android:layout_width="wrap_content"
+                    android:layout_marginEnd="15dp"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/tv_official_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/my_text_color"
+                    android:layout_toEndOf="@id/iv_official_id"
+                    android:textSize="16sp"/>
+
+                <TextView
+                    android:id="@+id/tv_official_id_hint"
+                    android:text="Tap to change official agent Id"
+                    android:layout_width="wrap_content"
+                    android:layout_toEndOf="@id/iv_official_id"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_official_id"/>
+
+                <View
+                    android:id="@+id/hr_official_id"
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_toEndOf="@id/iv_official_id"
+                    android:layout_below="@id/tv_official_id_hint"
+                    android:background="#ccc" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
                 android:id="@+id/address_layout"
                 android:layout_width="match_parent"
                 android:orientation="vertical"
@@ -236,7 +279,47 @@
 
             </RelativeLayout>
 
+            <RelativeLayout
+                android:id="@+id/payment_layout"
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="20dp"
+                android:layout_height="wrap_content">
 
+                <ImageView
+                    android:id="@+id/iv_payment_icon"
+                    android:src="@drawable/ic_baseline_payment_24"
+                    android:layout_width="wrap_content"
+                    android:layout_marginEnd="15dp"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/tv_payment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/my_text_color"
+                    android:layout_toEndOf="@id/iv_payment_icon"
+                    android:textSize="16sp"/>
+
+                <TextView
+                    android:id="@+id/tv_payment_hint"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_payment"
+                    android:layout_toEndOf="@id/iv_payment_icon"
+                    android:text="Next billing date" />
+
+                <View
+                    android:id="@+id/hr_payment"
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_toEndOf="@id/iv_payment_icon"
+                    android:layout_below="@id/tv_payment_hint"
+                    android:background="#ccc" />
+
+            </RelativeLayout>
 
         </LinearLayout>
 

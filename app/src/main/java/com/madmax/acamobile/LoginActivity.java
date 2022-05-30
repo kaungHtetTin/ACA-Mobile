@@ -91,6 +91,7 @@ public class LoginActivity extends AppCompatActivity {
                 MyHttp myHttp=new MyHttp(MyHttp.RequesMethod.POST, new MyHttp.Response() {
                     @Override
                     public void onResponse(String response) {
+                        Log.e("login ",response);
                         postExecutor.execute(new Runnable() {
                             @Override
                             public void run() {
@@ -99,12 +100,23 @@ public class LoginActivity extends AppCompatActivity {
                                     JSONObject jo=new JSONObject(response);
                                     String auth=jo.getString("auth");
                                     if(auth.equals("success")){
+
                                         String userId = jo.getString("user_id");
                                         String authToken = jo.getString("auth_token");
                                         String profileImage=jo.getString("profile_image");
+                                        long valid_date=jo.getLong("valid_date");
+                                        boolean verified=jo.getInt("verified")==1;
+                                        int rank_id=jo.getInt("rank_id");
+                                        float version=(float) jo.getDouble("version");
+
                                         editor.putString("profileImage",profileImage);
                                         editor.putString("authToken", authToken);
                                         editor.putString("userId", userId);
+                                        editor.putLong("valid_date",valid_date);
+                                        editor.putBoolean("verified",verified);
+                                        editor.putInt("rank_id",rank_id);
+                                        editor.putFloat("version",version);
+
                                         editor.apply();
                                         Intent intent=new Intent(LoginActivity.this,MainActivity.class);
                                         startActivity(intent);
@@ -131,6 +143,7 @@ public class LoginActivity extends AppCompatActivity {
                                 tv_error.setText("Unexpected Error! Please connect to help center.");
                                 tv_error.setVisibility(View.VISIBLE);
                                 bt_login.setEnabled(true);
+                                Log.e("Login Err ",msg);
                             }
                         });
 

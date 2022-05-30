@@ -20,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.madmax.acamobile.BrandListActivity;
 import com.madmax.acamobile.BusinessActivity;
 import com.madmax.acamobile.CreateOrderActivity;
+import com.madmax.acamobile.MainActivity;
 import com.madmax.acamobile.MyGroupActivity;
 import com.madmax.acamobile.PartnerGroupDetailActivity;
 import com.madmax.acamobile.PartnerGroupListActivity;
@@ -28,7 +29,9 @@ import com.madmax.acamobile.ProductListActivity;
 import com.madmax.acamobile.R;
 import com.madmax.acamobile.StockListActivity;
 import com.madmax.acamobile.VoucherActivity;
+import com.madmax.acamobile.WebViewActivity;
 import com.madmax.acamobile.app.AppUtils;
+import com.madmax.acamobile.app.Routing;
 import com.madmax.acamobile.models.PanelModel;
 import java.util.ArrayList;
 import java.util.concurrent.Executor;
@@ -42,17 +45,20 @@ public class MainPanelAdapter extends RecyclerView.Adapter<MainPanelAdapter.Hold
     final SharedPreferences sharedPreferences;
     String userId,authToken;
     Executor postExecutor;
+    boolean verified;
+    long valid_date;
 
     public MainPanelAdapter(Activity c, ArrayList<PanelModel> data){
         this.data=data;
         this.c=c;
         this.mInflater= LayoutInflater.from(c);
         sharedPreferences=c.getSharedPreferences("GeneralData", Context.MODE_PRIVATE);
+        verified=sharedPreferences.getBoolean("verified",false);
         userId=sharedPreferences.getString("userId",null);
         authToken=sharedPreferences.getString("authToken",null);
         postExecutor= ContextCompat.getMainExecutor(c);
-
-
+        valid_date=sharedPreferences.getLong("valid_date",0);
+        valid_date=valid_date*1000;
 
     }
 
@@ -94,17 +100,34 @@ public class MainPanelAdapter extends RecyclerView.Adapter<MainPanelAdapter.Hold
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+
+                    if(valid_date<System.currentTimeMillis()){
+                        Intent intent=new Intent(c, WebViewActivity.class);
+                        intent.putExtra("link", Routing.DOMAIN+"acamobile/register.php");
+                        c.startActivity(intent);
+                        return;
+                    }
+
+
                     PanelModel model=data.get(getAdapterPosition());
                     switch (model.getId()){
                         case 1:
-                            Intent intent1=new Intent(c, BrandListActivity.class);
-                            intent1.putExtra("key","create_order");
-                            c.startActivity(intent1);
+                            if(verified){
+                                Intent intent1=new Intent(c, BrandListActivity.class);
+                                intent1.putExtra("key","create_order");
+                                c.startActivity(intent1);
+                            }else{
+                                Toast.makeText(c,"Your account is not verified by your leader",Toast.LENGTH_SHORT).show();
+                            }
                             break;
                         case 2:
-                            Intent intent2=new Intent(c, BrandListActivity.class);
-                            intent2.putExtra("key","voucher");
-                            c.startActivity(intent2);
+                            if(verified){
+                                Intent intent2=new Intent(c, BrandListActivity.class);
+                                intent2.putExtra("key","voucher");
+                                c.startActivity(intent2);
+                            }else{
+                                Toast.makeText(c,"Your account is not verified by your leader",Toast.LENGTH_SHORT).show();
+                            }
                             break;
                         case 3:
                             Intent intent3=new Intent(c, ProductLeftActivity.class);

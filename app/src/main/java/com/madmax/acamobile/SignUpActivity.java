@@ -202,7 +202,7 @@ public class SignUpActivity extends AppCompatActivity {
                 MyHttp myHttp=new MyHttp(MyHttp.RequesMethod.POST, new MyHttp.Response() {
                     @Override
                     public void onResponse(String response) {
-
+                        Log.e("email REs ",response);
                         postExecutor.execute(new Runnable() {
                             @Override
                             public void run() {
@@ -233,7 +233,7 @@ public class SignUpActivity extends AppCompatActivity {
                     }
                     @Override
                     public void onError(String msg) {
-
+                        Log.e("EmailErr ",msg);
                         postExecutor.execute(new Runnable() {
                             @Override
                             public void run() {
@@ -283,7 +283,7 @@ public class SignUpActivity extends AppCompatActivity {
                                 editor.putString("authToken", authToken);
                                 editor.putString("userId", userId);
                                 editor.apply();
-                                Intent intent=new Intent(SignUpActivity.this,MainActivity.class);
+                                Intent intent=new Intent(SignUpActivity.this,SplashScreenActivity.class);
                                 startActivity(intent);
                                 finish();
 

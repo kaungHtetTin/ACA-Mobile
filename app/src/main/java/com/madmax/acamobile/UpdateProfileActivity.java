@@ -43,8 +43,8 @@ public class UpdateProfileActivity extends AppCompatActivity  {
     Toolbar toolbar;
     ImageView iv_profile_small,iv_collapse;
     CollapsingToolbarLayout toolbarLayout;
-    RelativeLayout email_layout,phone_layout,name_layout,address_layout;
-    TextView tv_email,tv_phone,tv_name,tv_address;
+    RelativeLayout email_layout,phone_layout,name_layout,address_layout,official_id_layout,payment_layout;
+    TextView tv_email,tv_phone,tv_name,tv_address,tv_official_id,tv_payment;
     FloatingActionButton fab;
     NestedScrollView nestedScrollView;
 
@@ -73,6 +73,8 @@ public class UpdateProfileActivity extends AppCompatActivity  {
         phone_layout=findViewById(R.id.phone_layout);
         name_layout=findViewById(R.id.name_layout);
         address_layout=findViewById(R.id.address_layout);
+        official_id_layout=findViewById(R.id.official_id_layout);
+        payment_layout=findViewById(R.id.payment_layout);
         nestedScrollView=findViewById(R.id.profile_layout);
         fab=findViewById(R.id.fab);
 
@@ -80,6 +82,8 @@ public class UpdateProfileActivity extends AppCompatActivity  {
         tv_phone=findViewById(R.id.tv_phone);
         tv_name=findViewById(R.id.tv_name);
         tv_address=findViewById(R.id.tv_address);
+        tv_payment=findViewById(R.id.tv_payment);
+        tv_official_id=findViewById(R.id.tv_official_id);
 
         toolbar=findViewById(R.id.toolbar);
         iv_profile_small=findViewById(R.id.iv_product_small);
@@ -154,6 +158,22 @@ public class UpdateProfileActivity extends AppCompatActivity  {
             @Override
             public void onClick(View view) {
                 goToProfileContentUpdate("Update your address","Add your address so that your partner can contact you easily.We recommend to type your address in English.","address");
+            }
+        });
+
+        official_id_layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goToProfileContentUpdate("Enter official agent ID","Update your company official agent ID","official_agent_id");
+            }
+        });
+
+        payment_layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(UpdateProfileActivity.this, WebViewActivity.class);
+                intent.putExtra("link", Routing.DOMAIN+"acamobile/register.php");
+                startActivity(intent);
             }
         });
 
@@ -255,12 +275,16 @@ public class UpdateProfileActivity extends AppCompatActivity  {
             String email=jo.getString("email");
             String phone=jo.getString("phone");
             String address=jo.getString("address");
+            String official_id=jo.getString("official_agent_id");
+            long valid_date=jo.getLong("valid_date");
+            valid_date=valid_date*1000;
 
             toolbarLayout.setTitle(name);
             tv_name.setText(name);
             tv_email.setText(email);
             tv_phone.setText(phone);
-
+            tv_official_id.setText(official_id);
+            tv_payment.setText(AppUtils.millisecondToDate(valid_date));
             if(address.equals("")){
                 tv_address.setText("No Address is added.");
             }else{

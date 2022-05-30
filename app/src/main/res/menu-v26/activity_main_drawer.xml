@@ -30,6 +30,10 @@
             android:icon="@drawable/ic_baseline_lock_24"
             android:title="Reset Password" />
 
+        <item android:id="@+id/nav_app_upate"
+            android:icon="@drawable/ic_baseline_cloud_download_24"
+            android:title="Check Update"/>
+
         <item
             android:id="@+id/nav_about"
             android:iconTint="#999"

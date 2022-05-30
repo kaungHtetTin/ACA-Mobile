@@ -8,6 +8,7 @@ import com.madmax.acamobile.interfaces.GetStockCompleteListener;
 import com.madmax.acamobile.models.BrandModel;
 import com.madmax.acamobile.models.PriceModel;
 import com.madmax.acamobile.models.ProductModel;
+import com.madmax.acamobile.models.RankModel;
 import com.madmax.acamobile.models.StockModel;
 
 import org.json.JSONArray;
@@ -22,6 +23,7 @@ public class Initializer {
     public static ArrayList<ProductModel> products=new ArrayList<>();
     public static ArrayList<BrandModel> brands=new ArrayList<>();
     public static ArrayList<StockModel> stocks=new ArrayList<>();
+    public static ArrayList<RankModel> ranks=new ArrayList<>();
 
     public Initializer(Context context) {
         this.context = context;
@@ -35,14 +37,8 @@ public class Initializer {
 
     public void initialize(){
         getProducts();
-    }
-
-
-    private void checkValidDate(){
 
     }
-
-
 
     public void getStocks(GetStockCompleteListener listener){
         new Thread(() -> {
@@ -125,6 +121,14 @@ public class Initializer {
 
                             brands.add(new BrandModel(brand_id,brand_name));
 
+                        }
+
+                        JSONArray rankArr=jo.getJSONArray("ranks");
+                        for(int i=0;i<rankArr.length();i++){
+                            JSONObject jo2=rankArr.getJSONObject(i);
+                            int id=jo2.getInt("id");
+                            String rank=jo2.getString("rank");
+                            ranks.add(new RankModel(id,rank));
                         }
 
 

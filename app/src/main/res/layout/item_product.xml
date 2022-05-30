@@ -84,6 +84,7 @@
         android:background="@drawable/bg_price_stroke"
         android:gravity="center"
         android:padding="5dp"
+        android:visibility="gone"
         android:text="200 Price"
         android:textColor="@color/my_text_color" />
 
@@ -93,6 +94,7 @@
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:visibility="gone"
         android:padding="5dp"
         android:textColor="@color/my_text_color"
         android:background="@drawable/bg_price_stroke"/>
@@ -104,6 +106,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:padding="5dp"
+        android:visibility="gone"
         android:textColor="@color/my_text_color"
         android:background="@drawable/bg_price_stroke"/>
 
@@ -113,6 +116,7 @@
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:visibility="gone"
         android:padding="5dp"
         android:textColor="@color/my_text_color"
         android:background="@drawable/bg_price_stroke"/>
@@ -123,6 +127,7 @@
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:visibility="gone"
         android:padding="5dp"
         android:textColor="@color/my_text_color"
         android:background="@drawable/bg_price_stroke"/>
@@ -133,6 +138,7 @@
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:visibility="gone"
         android:padding="5dp"
         android:textColor="@color/my_text_color"
         android:background="@drawable/bg_price_stroke"/>
@@ -143,6 +149,7 @@
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:visibility="gone"
         android:padding="5dp"
         android:textColor="@color/my_text_color"
         android:background="@drawable/bg_price_stroke"/>

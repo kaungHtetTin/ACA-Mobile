@@ -3,12 +3,16 @@ package com.madmax.acamobile;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.widget.NestedScrollView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -26,6 +30,7 @@ import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.madmax.acamobile.app.AppUtils;
+import com.madmax.acamobile.app.Initializer;
 import com.madmax.acamobile.app.MyHttp;
 import com.madmax.acamobile.app.Routing;
 
@@ -40,7 +45,7 @@ import java.util.concurrent.Executor;
 
 public class ProfileActivity extends AppCompatActivity {
 
-    TextView tv_name,tv_phone,tv_email,tv_address,tv_date,tv_startDate,tv_endDate;
+    TextView tv_name,tv_phone,tv_email,tv_address,tv_date,tv_startDate,tv_endDate,tv_official_id,tv_rank;
     LinearLayout order_layout,sent_layout,target_layout;
     ImageView iv_profile_small,iv_collapse;
     FloatingActionButton fab;
@@ -49,7 +54,7 @@ public class ProfileActivity extends AppCompatActivity {
     CollapsingToolbarLayout toolbarLayout;
     NestedScrollView nestedScrollView;
     Button bt_calculate;
-    String memberId,groupId;
+    String memberId,groupId,agent_phone;
 
     long startDate=0,finalDate=System.currentTimeMillis();
 
@@ -74,6 +79,8 @@ public class ProfileActivity extends AppCompatActivity {
         tv_date=findViewById(R.id.tv_join_date);
         tv_startDate=findViewById(R.id.tv_startDate);
         tv_endDate=findViewById(R.id.tv_endDate);
+        tv_official_id=findViewById(R.id.tv_official_id);
+        tv_rank=findViewById(R.id.tv_rank);
         order_layout=findViewById(R.id.order_layout);
         sent_layout=findViewById(R.id.sent_layout);
         target_layout=findViewById(R.id.target_layout);
@@ -144,7 +151,11 @@ public class ProfileActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                if(isPermissionGranted()){
+                    callPhone(agent_phone);
+                }else{
+                    takePermission();
+                }
             }
         });
 
@@ -272,17 +283,54 @@ public class ProfileActivity extends AppCompatActivity {
         String name=jo.getString("name");
         String profileUrl=jo.getString("profile_image");
         String email= jo.getString("email");
-        String phone= jo.getString("phone");
+        agent_phone= jo.getString("phone");
         String address=jo.getString("address");
+        String official_id=jo.getString("official_agent_id");
+        int rank_id=jo.getInt("rank_id");
+
+
 
         toolbarLayout.setTitle(name);
         tv_name.setText(name);
         AppUtils.setPhotoFromRealUrl(iv_collapse,Routing.PROFILE_URL+profileUrl);
         AppUtils.setPhotoFromRealUrl(iv_profile_small,Routing.PROFILE_URL+profileUrl);
         tv_email.setText(email);
-        tv_phone.setText(phone);
+        tv_phone.setText(agent_phone);
         tv_address.setText(address);
+        tv_official_id.setText(official_id);
+        tv_rank.setText(Initializer.ranks.get(rank_id-1).getRank());
 
+    }
+
+    private void takePermission(){
+        ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.CALL_PHONE},101);
+    }
+
+    private boolean isPermissionGranted(){
+        int  callPhone= ContextCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE);
+        return  callPhone== PackageManager.PERMISSION_GRANTED;
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults)
+    {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if(grantResults.length>0){
+            if(requestCode==101){
+                boolean callPhone=grantResults[0]==PackageManager.PERMISSION_GRANTED;
+                if(callPhone){
+                    callPhone(agent_phone);
+                }else {
+                    takePermission();
+                }
+            }
+        }
+    }
+
+    private void callPhone(String phone){
+        phone=phone.replace("#","%23");
+        Intent intent=new Intent(Intent.ACTION_CALL, Uri.parse("tel:"+phone));
+        startActivity(intent);
     }
 
     @Override

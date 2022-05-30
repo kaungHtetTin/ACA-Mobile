@@ -29,10 +29,12 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.Holder> 
     final SharedPreferences sharedPreferences;
     String userId,authToken;
     Executor postExecutor;
+    int rank_id;
 
-    public ProductAdapter(Activity c, ArrayList<ProductModel> data){
+    public ProductAdapter(Activity c, ArrayList<ProductModel> data,int rank_id){
         this.data=data;
         this.c=c;
+        this.rank_id=rank_id;
         this.mInflater= LayoutInflater.from(c);
         sharedPreferences=c.getSharedPreferences("GeneralData", Context.MODE_PRIVATE);
         userId=sharedPreferences.getString("userId",null);
@@ -73,6 +75,30 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.Holder> 
 
             holder.tv_point.setText(model.getPoint()+"");
             holder.tv_discount.setText(model.getDiscount()+"");
+
+            if(rank_id>1){
+                holder.tv_200.setVisibility(View.VISIBLE);
+            }
+
+            if(rank_id>2){
+                holder.tv_500.setVisibility(View.VISIBLE);
+            }
+
+            if(rank_id>3){
+                holder.tv_1000.setVisibility(View.VISIBLE);
+            }
+
+            if(rank_id>4){
+                holder.tv_2000.setVisibility(View.VISIBLE);
+            }
+
+            if(rank_id>5){
+                holder.tv_3000.setVisibility(View.VISIBLE);
+            }
+
+            if(rank_id>6){
+                holder.tv_5000.setVisibility(View.VISIBLE);
+            }
 
             if(position%2==0){
                 holder.layout.setBackgroundColor(c.getResources().getColor(R.color.noti_color));

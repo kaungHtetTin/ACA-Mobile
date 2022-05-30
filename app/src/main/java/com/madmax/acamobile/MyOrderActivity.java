@@ -36,10 +36,8 @@ public class MyOrderActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     ProgressBar pb;
     TextView tv_msg;
-
     ArrayList<VoucherModel> vouchers=new ArrayList<>();
     MyOrderAdapter adapter;
-
     int page=1;
     private boolean loading=true;
     int visibleItemCount,totalItemCount;
@@ -166,7 +164,6 @@ public class MyOrderActivity extends AppCompatActivity {
 
         }catch (Exception e){}
     }
-
 
 
     @Override

@@ -20,6 +20,12 @@
         android:theme="@style/Theme.BusinessMaster"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".AppUpdateActivity"
+            android:exported="false" />
+        <activity
+            android:name=".WebViewActivity"
+            android:exported="false" />
+        <activity
             android:name=".ForgetPasswordActivity"
             android:exported="false" />
         <activity

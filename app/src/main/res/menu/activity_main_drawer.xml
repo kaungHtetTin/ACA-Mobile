@@ -24,6 +24,15 @@
             android:icon="@drawable/nav_edit_invoice"
             android:title="Edit Invoice" />
 
+        <item android:id="@+id/nav_app_upate"
+            android:icon="@drawable/ic_baseline_cloud_download_24"
+            android:title="Check Update"/>
+
+        <item
+            android:id="@+id/nav_about"
+            android:icon="@drawable/ic_baseline_info_24"
+            android:title="About" />
+
         <item
             android:id="@+id/nav_logOut"
             android:iconTint="#999"

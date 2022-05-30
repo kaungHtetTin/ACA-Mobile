@@ -1,7 +1,8 @@
 package com.madmax.acamobile.app;
 
 public class Routing {
-    public static String DOMAIN="http://192.168.6.17/";
+    //public static String DOMAIN="http://www.madmaxmm.online/";
+    public static String DOMAIN="http://192.168.110.17/";
     public static final String API=DOMAIN+"acamobile/api/";
     public static final String PROFILE_URL=DOMAIN+"acamobile/uploads/profiles/";
     public static final String GROUP_COVER_URL=DOMAIN+"acamobile/uploads/groups/";
@@ -82,8 +83,14 @@ public class Routing {
     public static final String CHART_GROUP_SALE_RATE_IN_A_PRODUCT=API+"chart/group/salerateforaitem.php";
     public static final String CHART_GROUP_FILTER_ORDER_RATE=API+"chart/group/filter_order_rate.php";
 
-    //password
+    //user and password
     public static final String CHECK_CURRENT_PASSWORD=API+"users/checkpassword.php";
     public static final String RESET_PASSWORD_BY_USER=API+"users/resetpassword.php";
     public static final String GENERATE_OTP=API+"users/generate_otp.php";
+    public static final String CHECK_OTP=API+"users/check_otp.php";
+    public static final String RESET_PASSWORD_WITH_OTP=API+"users/reset_password_with_opt.php";
+    public static final String CHECK_ACC_VALIDATION=API+"users/check_validation.php";
+
+    //app update
+    public static final String CHECK_UPDATE=API+"versioncontrol.php";
 }

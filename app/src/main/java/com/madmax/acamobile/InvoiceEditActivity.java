@@ -3,6 +3,7 @@ package com.madmax.acamobile;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -18,6 +19,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -35,6 +37,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.Objects;
 
 public class InvoiceEditActivity extends AppCompatActivity {
 
@@ -51,6 +54,9 @@ public class InvoiceEditActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         sharedPreferences=getSharedPreferences("GeneralData", Context.MODE_PRIVATE);
+        Objects.requireNonNull(getSupportActionBar()).setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         invoice_address=sharedPreferences.getString("invoice_address","No Address");
         invoice_name=sharedPreferences.getString("invoice_name","No Name");
         invoice_phone=sharedPreferences.getString("invoice_phone","No Phone");
@@ -211,4 +217,13 @@ public class InvoiceEditActivity extends AppCompatActivity {
             Log.e("imageSave ",e.toString());
         }
     }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId()==android.R.id.home){
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
 }
