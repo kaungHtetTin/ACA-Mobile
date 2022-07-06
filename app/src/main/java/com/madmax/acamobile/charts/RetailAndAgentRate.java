@@ -36,6 +36,7 @@ import java.util.concurrent.Executor;
 public class RetailAndAgentRate {
 
     TextView tv_from,tv_to;
+    TextView tv_retail_amount,tv_retail_percent,tv_wholesale_amount,tv_wholesale_percent;
     LineChart lineChart;
     ProgressBar pb;
 
@@ -67,6 +68,12 @@ public class RetailAndAgentRate {
         tv_to=view.findViewById(R.id.tv_to);
         lineChart=view.findViewById(R.id.lineChart);
         pb=view.findViewById(R.id.pb);
+
+        tv_retail_amount=view.findViewById(R.id.tv_retail_amount1);
+        tv_retail_percent=view.findViewById(R.id.tv_retail_percent);
+        tv_wholesale_amount=view.findViewById(R.id.tv_wholesale_amount1);
+        tv_wholesale_percent=view.findViewById(R.id.tv_wholesale_percent);
+
         setUpChartView();
         fetchStatisticData();
     }
@@ -176,6 +183,8 @@ public class RetailAndAgentRate {
             }
 
 
+            int totalRetail=0;
+            int totalWholesale=0;
             for (int i = 0; i < Initializer.products.size(); i++) {
                 ProductModel model = Initializer.products.get(i);
                 String productId = model.getProduct_id() + "";
@@ -183,6 +192,7 @@ public class RetailAndAgentRate {
                 if(joRetail!=null){
                     if(joRetail.has(productId)){
                         int count=joRetail.getJSONObject(productId).getInt("count");
+                        totalRetail+=count;
                         retails.add(new Entry(i,count));
                     }else{
                         retails.add(new Entry(i,0));
@@ -194,6 +204,7 @@ public class RetailAndAgentRate {
                 if(joAgent!=null){
                     if (joAgent.has(productId)) {
                         int count = joAgent.getJSONObject(productId).getInt("count");
+                        totalWholesale+=count;
                         agents.add(new Entry(i, count));
                     } else {
                         agents.add(new Entry(i, 0));
@@ -203,12 +214,27 @@ public class RetailAndAgentRate {
                 }
             }
 
+            int total=totalRetail+totalWholesale;
 
-            LineDataSet setComp1 = new LineDataSet(retails, "Retails");
+            Log.e("Whosale Rate ", "Retail - "+totalRetail+" sale - "+totalWholesale);
+            tv_retail_amount.setText(totalRetail+"");
+            tv_wholesale_amount.setText(totalWholesale+"");
+
+            if(total!=0){
+                int retailPercent=totalRetail*(100/total);
+                int wholesalePercent=100-retailPercent;
+                tv_retail_percent.setText(retailPercent+"%");
+                tv_wholesale_percent.setText(wholesalePercent+"%");
+            }else{
+                tv_retail_percent.setText("0 %");
+                tv_wholesale_percent.setText("0 %");
+            }
+
+            LineDataSet setComp1 = new LineDataSet(retails, "Retail");
             setComp1.setColor(Color.GREEN);
             setComp1.setAxisDependency(YAxis.AxisDependency.LEFT);
 
-            LineDataSet setComp2 = new LineDataSet(agents, "Agents");
+            LineDataSet setComp2 = new LineDataSet(agents, "Wholesale");
             setComp2.setColor(Color.BLUE);
             setComp2.setAxisDependency(YAxis.AxisDependency.LEFT);
 
@@ -235,7 +261,7 @@ public class RetailAndAgentRate {
 
             pb.setVisibility(View.GONE);
             lineChart.setVisibility(View.VISIBLE);
-            lineChart.getDescription().setText("Retail Vs Agent");
+            lineChart.getDescription().setText("Retail Vs Wholesale");
 
         } catch (Exception e) {
             Log.e("TargetCharErr ", e.toString());

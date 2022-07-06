@@ -208,7 +208,7 @@ public class SaleRateInAProduct {
 
             pb.setVisibility(View.GONE);
             lineChart.setVisibility(View.VISIBLE);
-            lineChart.getDescription().setText("Profit Chart");
+            lineChart.getDescription().setText("");
 
         } catch (Exception e) {
             Log.e("TargetCharErr ", e.toString());

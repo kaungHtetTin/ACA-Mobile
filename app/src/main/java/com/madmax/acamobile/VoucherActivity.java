@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -71,7 +70,9 @@ public class VoucherActivity extends AppCompatActivity {
     String customer_name;
     String customer_address;
     String customer_phone;
+    String customer;
 
+    public static boolean invoiceCreated=false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,6 +83,7 @@ public class VoucherActivity extends AppCompatActivity {
         authToken=sharedPreferences.getString("authToken",null);
         postExecutor= ContextCompat.getMainExecutor(this);
 
+        customer=getIntent().getExtras().getString("customer",null);
         brand_id=getIntent().getExtras().getInt("brand_id");
 
         Objects.requireNonNull(getSupportActionBar()).setHomeButtonEnabled(true);
@@ -91,8 +93,10 @@ public class VoucherActivity extends AppCompatActivity {
 
         setUpView();
         voucherOrders.clear();
+        invoiceCreated=false;
 
     }
+
 
     private void setUpView(){
         recyclerView=findViewById(R.id.recyclerView);
@@ -126,6 +130,26 @@ public class VoucherActivity extends AppCompatActivity {
 
         getProductLeftByStocks();
 
+        if(customer!=null){
+            setUpCustomer();
+        }
+
+    }
+
+    private void setUpCustomer() {
+        try {
+            JSONObject jo=new JSONObject(customer);
+            customer_name=jo.getString("name");
+            customer_phone=jo.getString("phone");
+            customer_address=jo.getString("address");
+
+            et_customer_name.setText(customer_name);
+            et_customer_address.setText(customer_address);
+            et_customer_phone.setText(customer_phone);
+
+        } catch (JSONException e) {
+
+        }
     }
 
     @Override
@@ -138,6 +162,10 @@ public class VoucherActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
 
+        if(invoiceCreated){
+            finish();
+            invoiceCreated=false;
+        }
         super.onResume();
     }
 
@@ -253,6 +281,7 @@ public class VoucherActivity extends AppCompatActivity {
         startActivity(intent);
 
     }
+
     private void getProductLeftByStocks(){
         Thread t=new Thread(() -> {
             MyHttp myHttp = new MyHttp(MyHttp.RequesMethod.POST, new MyHttp.Response() {

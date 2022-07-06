@@ -12,7 +12,6 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.UriMatcher;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.util.Log;
@@ -43,16 +42,15 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.concurrent.Executor;
-import java.util.concurrent.Executors;
 
 public class CreateOrderActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
     Button bt_order_create,bt_confirm;
     OrderCreateProductAdapter adapter;
-    TextView tv_quantity_total,tv_amount_total,tv_point_total,tv_saving_total,tv_profit_total,tv_total_foc;
+    TextView tv_quantity_total,tv_amount_total,tv_point_total,tv_saving_total,tv_profit_total,tv_total_foc,tv_profit_percent;
 
-    TextView tv_group_name,tv_group_status,tv_profit_index;
+    TextView tv_group_name,tv_group_status,tv_profit_index,tv_price_header;
     ImageView iv_group_thumb;
 
     ArrayList<OrderModel> orders=new ArrayList<>();
@@ -65,7 +63,7 @@ public class CreateOrderActivity extends AppCompatActivity {
     String currentUserId,authToken;
     SharedPreferences sharedPreferences;
 
-    public static int price_index;
+    public static int price_index,SELECTED_PRICE_INDEX=13;
     double total_amount;
     int total_quantity;
     int brand_id;
@@ -101,8 +99,9 @@ public class CreateOrderActivity extends AppCompatActivity {
         card_selected=findViewById(R.id.card_selected);
         tv_profit_index=findViewById(R.id.tv_profit_index);
         tv_total_foc=findViewById(R.id.tv_foc_total);
-
-        tv_group_name=findViewById(R.id.tv_group_name);
+        tv_profit_percent=findViewById(R.id.tv_profit_percent);
+        tv_price_header=findViewById(R.id.tv_price_header);
+        tv_group_name=findViewById(R.id.tv_address);
         tv_group_status=findViewById(R.id.tv_group_status);
         iv_group_thumb=findViewById(R.id.iv_group_thumb);
         iv_group_thumb.setClipToOutline(true);
@@ -134,6 +133,13 @@ public class CreateOrderActivity extends AppCompatActivity {
             }
         });
 
+        tv_price_header.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showSelectedPriceMenu(view);
+            }
+        });
+
         bt_confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -157,6 +163,12 @@ public class CreateOrderActivity extends AppCompatActivity {
     private void sendOrder(){
 
         pb.setVisibility(View.VISIBLE);
+        String price_edit;
+        if(SELECTED_PRICE_INDEX==13){
+            price_edit="0";
+        }else{
+            price_edit="1";
+        }
 
         new Thread(() -> {
             MyHttp myHttp=new MyHttp(MyHttp.RequesMethod.POST, new MyHttp.Response() {
@@ -189,6 +201,7 @@ public class CreateOrderActivity extends AppCompatActivity {
                     .field("auth_token",authToken)
                     .field("total_amount",total_amount+"")
                     .field("group_id",selectedGroup.getGroup_id())
+                    .field("price_edit",price_edit)
                     .field("productJSON",makeOrderJSON());
 
             myHttp.runTask();
@@ -274,6 +287,13 @@ public class CreateOrderActivity extends AppCompatActivity {
         tv_quantity_total.setText(count +" / "+total_quantity);
         tv_profit_total.setText(AppUtils.getTwoDecimalDouble(total_profit));
         tv_total_foc.setText(""+total_foc);
+
+        if(total_amount==0){
+            tv_profit_percent.setText("0%");
+        }else{
+            double profit_percent= (total_profit*(100/total_amount));
+            tv_profit_percent.setText(AppUtils.getTwoDecimalDouble(profit_percent)+"%");
+        }
     }
 
     private String makeOrderJSON(){
@@ -415,6 +435,81 @@ public class CreateOrderActivity extends AppCompatActivity {
 
                 calculate();
 
+                return true;
+            }
+        });
+        popup.show();
+    }
+
+    private void showSelectedPriceMenu(View v){
+        PopupMenu popup=new PopupMenu(this,v);
+        popup.getMenuInflater().inflate(R.menu.price_menu,popup.getMenu());
+        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @SuppressLint("Recycle")
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                int id=item.getItemId();
+                switch (id){
+                    case R.id.menu_retail:
+                        SELECTED_PRICE_INDEX=0;
+                        tv_price_header.setText("Price(Retail)");
+                        break;
+                    case R.id.menu_5:
+                        tv_price_header.setText("Price(5)");
+                        SELECTED_PRICE_INDEX=1;
+                        break;
+                    case R.id.menu_10:
+                        tv_price_header.setText("Price(10)");
+                        SELECTED_PRICE_INDEX=2;
+                        break;
+                    case R.id.menu_20:
+                        tv_price_header.setText("Price(20)");
+                        SELECTED_PRICE_INDEX=3;
+                        break;
+                    case R.id.menu_50:
+                        tv_price_header.setText("Price(50)");
+                        SELECTED_PRICE_INDEX=4;
+                        break;
+                    case R.id.menu_100:
+                        tv_price_header.setText("Price(100)");
+                        SELECTED_PRICE_INDEX=5;
+                        break;
+                    case R.id.menu_200:
+                        tv_price_header.setText("Price(200)");
+                        SELECTED_PRICE_INDEX=6;
+                        break;
+                    case R.id.menu_300:
+                        tv_price_header.setText("Price(300)");
+                        SELECTED_PRICE_INDEX=7;
+                        break;
+                    case R.id.menu_500:
+                        tv_price_header.setText("Price(500)");
+                        SELECTED_PRICE_INDEX=8;
+                        break;
+                    case R.id.menu_1000:
+                        tv_price_header.setText("Price (1000)");
+                        SELECTED_PRICE_INDEX=9;
+                        break;
+                    case R.id.menu_2000:
+                        tv_price_header.setText("Price(2000)");
+                        SELECTED_PRICE_INDEX=10;
+                        break;
+                    case R.id.menu_3000:
+                        tv_price_header.setText("Price(3000)");
+                        SELECTED_PRICE_INDEX=11;
+                        break;
+                    case R.id.menu_5000:
+                        tv_price_header.setText("Price(5000)");
+                        SELECTED_PRICE_INDEX=12;
+                        break;
+
+                    case R.id.menu_auto:
+                        SELECTED_PRICE_INDEX=13;
+                        tv_price_header.setText("Price(auto)");
+                        break;
+                }
+
+                calculate();
                 return true;
             }
         });

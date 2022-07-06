@@ -133,8 +133,8 @@ public class TargetPlanDetailActivity extends AppCompatActivity {
                 joTarget=joMain.getJSONObject("plans");
             }
 
-            if(joMain.has("orders")){
-                joOrder=joMain.getJSONObject("orders");
+            if(joMain.has("sales")){
+                joOrder=joMain.getJSONObject("sales");
             }
 
 
@@ -171,7 +171,7 @@ public class TargetPlanDetailActivity extends AppCompatActivity {
             setComp1.setColor(Color.RED);
             setComp1.setAxisDependency(YAxis.AxisDependency.LEFT);
 
-            LineDataSet setComp2 = new LineDataSet(orders, "Order  Rate");
+            LineDataSet setComp2 = new LineDataSet(orders, "Sale Rate");
             setComp2.setColor(Color.GREEN);
             setComp2.setAxisDependency(YAxis.AxisDependency.LEFT);
 

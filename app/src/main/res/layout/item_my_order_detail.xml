@@ -67,7 +67,7 @@
         android:layout_height="32dp"/>
 
     <TextView
-        android:id="@+id/tv_amount"
+        android:id="@+id/tv_phone"
         android:layout_width="120dp"
         android:gravity="center"
         android:background="@drawable/bg_price_stroke"

@@ -6,100 +6,118 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <TextView
+            android:id="@+id/tv_price_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:background="#f00"
+            android:textColor="@color/white"
+            android:visibility="gone"
+            android:text="Price Edited"/>
+
+
         <LinearLayout
             android:id="@+id/order_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@id/tv_price_edit"
             android:orientation="vertical">
 
             <TextView
-                android:text="My Order Detail"
                 android:layout_width="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
-                android:layout_height="wrap_content"
-                android:textSize="14sp"
-                android:textColor="@color/color_on_primary"/>
+                android:layout_marginTop="20dp"
+                android:text="My Order Detail"
+                android:textColor="@color/color_on_primary"
+                android:textSize="14sp" />
 
             <TextView
-                android:id="@+id/tv_group_name"
+                android:id="@+id/tv_address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textStyle="bold|italic"
                 android:layout_marginEnd="10dp"
-                android:gravity="end"/>
+                android:gravity="end"
+                android:textStyle="bold|italic" />
 
             <TextView
-                android:id="@+id/tv_status"
+                android:id="@+id/tv_is_agent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textStyle="bold|italic"
                 android:layout_marginEnd="10dp"
-                android:gravity="end"/>
+                android:gravity="end"
+                android:textStyle="bold|italic" />
+
             <TextView
                 android:id="@+id/tv_date"
-                android:gravity="end"
-                android:layout_width="match_parent"
-                android:layout_marginEnd="10dp"
-                android:textStyle="bold|italic"
-                android:layout_height="wrap_content"/>
-
-            <TextView
-                android:id="@+id/tv_voucher_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textStyle="bold|italic"
                 android:layout_marginEnd="10dp"
-                android:gravity="end"/>
+                android:gravity="end"
+                android:textStyle="bold|italic" />
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:gravity="end"
+                android:textStyle="bold|italic" />
 
             <HorizontalScrollView
                 android:layout_width="match_parent"
-                android:orientation="vertical"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="10dp"
-                android:layout_height="wrap_content">
+                android:orientation="vertical">
+
                 <LinearLayout
                     android:layout_width="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_height="wrap_content">
-                    <include layout="@layout/item_my_order_detail_header"/>
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <include layout="@layout/item_my_order_detail_header" />
+
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/recyclerView"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-                    <include layout="@layout/item_my_order_detail_footer"/>
+                        android:layout_height="wrap_content" />
+
+                    <include layout="@layout/item_my_order_detail_footer" />
                 </LinearLayout>
             </HorizontalScrollView>
 
             <TextView
-                android:text="Total"
                 android:layout_width="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginStart="15dp"
                 android:layout_height="wrap_content"
-                android:textSize="14sp"
-                android:textColor="@color/color_on_primary"/>
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="20dp"
+                android:text="Total"
+                android:textColor="@color/color_on_primary"
+                android:textSize="14sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:orientation="vertical"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="10dp"
-                android:layout_height="wrap_content">
+                android:orientation="vertical">
+
                 <TextView
-                    android:text="Total Amount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:padding="2dp"/>
+                    android:padding="2dp"
+                    android:text="Total Amount" />
 
                 <TextView
                     android:id="@+id/tv_total_amount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="#02AE02"
                     android:padding="2dp"
-                    android:textStyle="bold"
-                    android:textSize="16sp" />
+                    android:textColor="#02AE02"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
                 <View
                     android:layout_width="fill_parent"
@@ -108,17 +126,17 @@
                     android:background="#ccc" />
 
                 <TextView
-                    android:text="Total Rewarded Point"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:padding="2dp"/>
+                    android:padding="2dp"
+                    android:text="Total Rewarded Point" />
 
                 <TextView
                     android:id="@+id/tv_total_point"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/my_text_color"
                     android:padding="2dp"
+                    android:textColor="@color/my_text_color"
                     android:textSize="16sp" />
 
                 <View
@@ -128,17 +146,17 @@
                     android:background="#ccc" />
 
                 <TextView
-                    android:text="Extra Cost(Tap to Update)"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:padding="2dp"/>
+                    android:padding="2dp"
+                    android:text="Extra Cost(Tap to Update)" />
 
                 <TextView
                     android:id="@+id/tv_total_extra_cost"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/my_text_color"
                     android:padding="2dp"
+                    android:textColor="@color/my_text_color"
                     android:textSize="16sp" />
 
                 <View
@@ -158,10 +176,11 @@
                     android:id="@+id/bt_cancel"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:visibility="gone"
                     android:layout_margin="7dp"
-                    android:text="Cancel"/>
+                    android:layout_weight="1"
+                    android:text="Cancel"
+                    android:textColor="@color/white"
+                    android:visibility="gone" />
 
                 <Button
                     android:id="@+id/bt_received"
@@ -169,8 +188,9 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="7dp"
                     android:layout_weight="1"
-                    android:visibility="gone"
-                    android:text="Received"/>
+                    android:text="Received"
+                    android:textColor="@color/white"
+                    android:visibility="gone" />
 
                 <Button
                     android:id="@+id/bt_call"
@@ -178,7 +198,8 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="7dp"
                     android:layout_weight="1"
-                    android:text="Call"/>
+                    android:text="Call"
+                    android:textColor="@color/white" />
 
             </LinearLayout>
 

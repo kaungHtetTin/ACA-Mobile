@@ -8,7 +8,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,10 +18,10 @@ import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.madmax.acamobile.CreateOrderActivity;
 import com.madmax.acamobile.R;
 import com.madmax.acamobile.app.AppUtils;
 import com.madmax.acamobile.app.Price;
-import com.madmax.acamobile.models.OrderModel;
 import com.madmax.acamobile.models.PriceModel;
 import com.madmax.acamobile.models.ProductModel;
 import java.util.ArrayList;
@@ -107,13 +106,20 @@ public class OrderCreateProductAdapter extends RecyclerView.Adapter<OrderCreateP
             holder.tv_product_name.setText(product_name);
             holder.et_quantity.setText(quantity+"");
             holder.tv_price.setText(model.getSelectedPrice()+"");
-            holder.tv_discount.setText(model.getDiscount()+" %");
             holder.tv_amount.setText(AppUtils.getTwoDecimalDouble(amount));
             holder.tv_point.setText(AppUtils.getTwoDecimalDouble((double)point));
             holder.tv_retail.setText(retail.getPrice()+"");
             holder.tv_saving.setText(""+saving);
             holder.tv_profit.setText(AppUtils.getTwoDecimalDouble((double)profit));
             holder.et_foc.setText(foc+"");
+
+            if(amount==0){
+                holder.tv_profit_percent.setText("0%");
+            }else{
+                double profit_percent= (profit*(100/amount));
+                holder.tv_profit_percent.setText(AppUtils.getTwoDecimalDouble(profit_percent)+"%");
+            }
+
 
             holder.et_quantity.addTextChangedListener(new TextWatcher() {
                 @Override
@@ -175,7 +181,7 @@ public class OrderCreateProductAdapter extends RecyclerView.Adapter<OrderCreateP
 
     public class Holder extends RecyclerView.ViewHolder{
 
-        TextView tv_point,tv_price,tv_amount,tv_retail,tv_saving,tv_profit,tv_discount,tv_product_name;
+        TextView tv_point,tv_price,tv_amount,tv_retail,tv_saving,tv_profit,tv_product_name,tv_profit_percent;
         EditText et_quantity,et_foc;
 
 
@@ -184,13 +190,13 @@ public class OrderCreateProductAdapter extends RecyclerView.Adapter<OrderCreateP
             tv_product_name=view.findViewById(R.id.tv_product_name);
             tv_point=view.findViewById(R.id.tv_point);
             tv_price=view.findViewById(R.id.tv_price);
-            tv_amount=view.findViewById(R.id.tv_amount);
+            tv_amount=view.findViewById(R.id.tv_phone);
             et_quantity=view.findViewById(R.id.et_quantity);
             et_foc=view.findViewById(R.id.et_foc);
             tv_retail=view.findViewById(R.id.tv_retail);
             tv_profit=view.findViewById(R.id.tv_profit);
-            tv_discount=view.findViewById(R.id.tv_discount);
             tv_saving= view.findViewById(R.id.tv_saving);
+            tv_profit_percent=view.findViewById(R.id.tv_profit_percent);
 
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -230,22 +236,27 @@ public class OrderCreateProductAdapter extends RecyclerView.Adapter<OrderCreateP
 
     private PriceModel selectPrice(PriceModel [] prices,int quantity){
 
-        for (int i = 0, pricesLength = prices.length; i < pricesLength; i++) {
-            PriceModel price = prices[i];
+        if(CreateOrderActivity.SELECTED_PRICE_INDEX==13){
+            for (int i = 0, pricesLength = prices.length; i < pricesLength; i++) {
+                PriceModel price = prices[i];
 
-            if (quantity <= price.getCount()-1) {
+                if (quantity <= price.getCount()-1) {
 
-                if(i==0){
-                    return prices[i];
-                }else{
-                    return prices[i-1];
+                    if(i==0){
+                        return prices[i];
+                    }else{
+                        return prices[i-1];
+                    }
                 }
+
+                if(quantity>=5000)return prices[Price.five_thousand_price];
+
             }
-
-            if(quantity>=5000)return prices[Price.five_thousand_price];
-
+            return prices[0];
+        }else{
+            return prices[CreateOrderActivity.SELECTED_PRICE_INDEX];
         }
-        return prices[0];
+
     }
 
 

@@ -63,7 +63,7 @@ public class MyGroupAdapter extends RecyclerView.Adapter<MyGroupAdapter.Holder> 
         ImageView iv_group_thumb;
         public Holder(View view){
             super(view);
-            tv_group_name=view.findViewById(R.id.tv_group_name);
+            tv_group_name=view.findViewById(R.id.tv_address);
             tv_group_status=view.findViewById(R.id.tv_group_status);
             iv_group_thumb=view.findViewById(R.id.iv_group_thumb);
             iv_group_thumb.setClipToOutline(true);

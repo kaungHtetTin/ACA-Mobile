@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="1dp"
+    app:cardElevation="1dp"
+    android:id="@+id/card_order"
+    android:foreground="?android:attr/selectableItemBackground">
+
+    <RelativeLayout
+        android:id="@+id/order_layout"
+        android:layout_width="match_parent"
+        android:padding="7dp"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/iv"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_baseline_co_present_24" />
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_toEndOf="@id/iv"
+            android:padding="2dp"
+            android:text="kaung HTet"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_name"
+            android:layout_alignStart="@id/tv_name"
+            android:text="095161017"
+            android:textColor="?android:textColorPrimary" />
+
+
+        <TextView
+            android:id="@+id/tv_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_phone"
+            android:layout_alignStart="@id/tv_name"
+            android:text="Yangon"
+            android:textColor="?android:textColorPrimary" />
+
+        <ImageView
+            android:id="@+id/iv_blue_mark"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_alignBottom="@id/tv_name"
+            android:layout_marginStart="4dp"
+            android:layout_toEndOf="@id/tv_name"
+            android:src="@drawable/ic_baseline_check_circle_24" />
+
+        <TextView
+            android:id="@+id/tv_new_voucher"
+            android:text="New Voucher"
+            android:layout_alignParentEnd="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:textColor="@color/color_on_primary"
+            android:padding="7dp"/>
+
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

@@ -90,7 +90,6 @@ public class SignUpActivity extends AppCompatActivity {
                 tv_error.setAnimation(animOut);
 
                 if(!TextUtils.isEmpty(et_info.getText().toString())){
-
                     infoCount++;
                     setUpForm();
                 }else{

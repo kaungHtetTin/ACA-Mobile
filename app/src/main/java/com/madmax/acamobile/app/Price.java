@@ -15,4 +15,20 @@ public class Price {
     public static int three_thousand_price=11;
     public static int five_thousand_price=12;
 
+    public static String[] priceTypes={
+            "Retail Price",
+            "5 Price",
+            "10 Price",
+            "20 Price",
+            "50 Price",
+            "100 Price",
+            "200 Price",
+            "300 Price",
+            "500 Price",
+            "1000 Price",
+            "2000 Price",
+            "3000 Price",
+            "5000 Price"
+    };
+
 }

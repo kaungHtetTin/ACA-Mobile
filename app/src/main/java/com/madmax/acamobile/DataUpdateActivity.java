@@ -53,6 +53,7 @@ public class DataUpdateActivity extends AppCompatActivity {
         contentId=getIntent().getExtras().getString("contentId","00");
         extra1=getIntent().getExtras().getString("extra1","");
 
+
         setUpView();
 
 
@@ -68,7 +69,7 @@ public class DataUpdateActivity extends AppCompatActivity {
 
         if(key.equals("phone")){
             et.setInputType(InputType.TYPE_CLASS_PHONE);
-        }else if(key.equals("discount") || key.equals("initial") || key.equals("count") ||
+        }else if(key.equals("discount") || key.equals("initial") || key.equals("count") || key.equals("price")||
                 key.equals("item_left")||key.equals("admin_extra_cost")){
             et.setInputType(InputType.TYPE_CLASS_NUMBER);
         }

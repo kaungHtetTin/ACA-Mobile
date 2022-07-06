@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -22,13 +24,15 @@ public class BrandAdapter extends RecyclerView.Adapter<BrandAdapter.Holder>{
     private final Activity c;
     private final ArrayList<BrandModel> data;
     private final LayoutInflater mInflater;
-    private String key;
+    private final String key;
+    private String customer;
 
-    public BrandAdapter(Activity c, ArrayList<BrandModel> data,String key) {
+    public BrandAdapter(Activity c, ArrayList<BrandModel> data,String key,String customer) {
         this.c = c;
         this.data = data;
         this.mInflater= LayoutInflater.from(c);
         this.key=key;
+        this.customer=customer;
     }
 
     @NonNull
@@ -64,6 +68,7 @@ public class BrandAdapter extends RecyclerView.Adapter<BrandAdapter.Holder>{
                     Intent intent;
                     if(key.equals("voucher")){
                         intent = new Intent(c, VoucherActivity.class);
+                        if(customer!=null) intent.putExtra("customer",customer);
                     }else{
                         intent = new Intent(c, CreateOrderActivity.class);
                     }

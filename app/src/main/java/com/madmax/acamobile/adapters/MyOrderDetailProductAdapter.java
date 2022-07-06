@@ -17,7 +17,7 @@ import com.madmax.acamobile.app.AppUtils;
 import com.madmax.acamobile.app.Price;
 import com.madmax.acamobile.models.OrderModel;
 import com.madmax.acamobile.models.ProductModel;
-import com.madmax.acamobile.models.StockModel;
+
 import java.util.ArrayList;
 import java.util.concurrent.Executor;
 
@@ -81,7 +81,7 @@ public class MyOrderDetailProductAdapter extends RecyclerView.Adapter<MyOrderDet
             tv_product_name=view.findViewById(R.id.tv_product_name);
             tv_point=view.findViewById(R.id.tv_point);
             tv_price=view.findViewById(R.id.tv_price);
-            tv_amount=view.findViewById(R.id.tv_amount);
+            tv_amount=view.findViewById(R.id.tv_phone);
             tv_quantity=view.findViewById(R.id.tv_quantity);
             tv_foc=view.findViewById(R.id.tv_foc);
             tv_retail=view.findViewById(R.id.tv_retail);

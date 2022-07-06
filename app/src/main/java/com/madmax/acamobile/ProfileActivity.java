@@ -1,5 +1,7 @@
 package com.madmax.acamobile;
 
+import static com.madmax.acamobile.app.Initializer.ranks;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -10,7 +12,10 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
@@ -20,6 +25,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.PopupMenu;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,6 +37,7 @@ import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClic
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.madmax.acamobile.app.AppUtils;
 import com.madmax.acamobile.app.Initializer;
+import com.madmax.acamobile.app.MyDialog;
 import com.madmax.acamobile.app.MyHttp;
 import com.madmax.acamobile.app.Routing;
 
@@ -45,8 +52,9 @@ import java.util.concurrent.Executor;
 
 public class ProfileActivity extends AppCompatActivity {
 
-    TextView tv_name,tv_phone,tv_email,tv_address,tv_date,tv_startDate,tv_endDate,tv_official_id,tv_rank;
-    LinearLayout order_layout,sent_layout,target_layout;
+    TextView tv_name,tv_phone,tv_email,tv_address,tv_date,tv_startDate,tv_endDate,tv_official_id,
+            tv_rank,tv_remove_info,tv_promote_info;
+    LinearLayout order_layout,sent_layout,target_layout,remove_layout,promote_layout;
     ImageView iv_profile_small,iv_collapse;
     FloatingActionButton fab;
     Executor postExecutor;
@@ -56,16 +64,24 @@ public class ProfileActivity extends AppCompatActivity {
     Button bt_calculate;
     String memberId,groupId,agent_phone;
 
+    SharedPreferences sharedPreferences;
+    String userId,authToken;
+    int rank_id;
     long startDate=0,finalDate=System.currentTimeMillis();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+        sharedPreferences=getSharedPreferences("GeneralData", Context.MODE_PRIVATE);
+        userId=sharedPreferences.getString("userId",null);
+        authToken=sharedPreferences.getString("authToken",null);
+        rank_id=sharedPreferences.getInt("rank_id",1);
 
         memberId=getIntent().getExtras().getString("memberId");
         groupId=getIntent().getExtras().getString("groupId");
         postExecutor= ContextCompat.getMainExecutor(this);
+
         setUpView();
 
     }
@@ -81,9 +97,13 @@ public class ProfileActivity extends AppCompatActivity {
         tv_endDate=findViewById(R.id.tv_endDate);
         tv_official_id=findViewById(R.id.tv_official_id);
         tv_rank=findViewById(R.id.tv_rank);
+        tv_remove_info=findViewById(R.id.tv_remove_info);
+        tv_promote_info=findViewById(R.id.tv_promote_info);
         order_layout=findViewById(R.id.order_layout);
         sent_layout=findViewById(R.id.sent_layout);
         target_layout=findViewById(R.id.target_layout);
+        remove_layout=findViewById(R.id.remove_layout);
+        promote_layout=findViewById(R.id.promote_layout);
         bt_calculate=findViewById(R.id.bt_calculate);
 
 
@@ -101,6 +121,19 @@ public class ProfileActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         AppBarLayout mAppBarLayout =findViewById(R.id.app_bar_layout);
         toolbarLayout.setTitle("Loading ... ");
+
+        remove_layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MyDialog myDialog=new MyDialog(ProfileActivity.this, "Remove User!", "This user will be permanently removed from the group", new MyDialog.ConfirmClick() {
+                    @Override
+                    public void onConfirmClick() {
+                        removeUser();
+                    }
+                });
+                myDialog.showMyDialog();
+            }
+        });
 
         mAppBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
             boolean isShow = false;
@@ -167,6 +200,13 @@ public class ProfileActivity extends AppCompatActivity {
                 intent.putExtra("groupId",groupId);
                 intent.putExtra("filtering",false);
                 startActivity(intent);
+            }
+        });
+
+        promote_layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showRankMenu(view);
             }
         });
 
@@ -242,6 +282,139 @@ public class ProfileActivity extends AppCompatActivity {
 
     }
 
+    private void showRankMenu(View v){
+
+        PopupMenu popup=new PopupMenu(this,v);
+        popup.getMenuInflater().inflate(R.menu.rank_menu,popup.getMenu());
+        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @SuppressLint("Recycle")
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                int id=item.getItemId();
+                int ranking=0;
+                switch (id){
+                    case R.id.rank_agent:
+                        ranking=1;
+                        break;
+                    case R.id.rank_special_agent:
+                        ranking=2;
+                        break;
+                    case R.id.rank_vip:
+                        ranking=3;
+
+                        break;
+                    case R.id.rank_dealer:
+                        ranking=4;
+
+                        break;
+                    case R.id.rank_wholesaler:
+                        ranking=5;
+
+                        break;
+                    case R.id.rank_silver_wholesaler:
+                        ranking=6;
+
+                        break;
+                    case R.id.rank_gold_wholesaler:
+                        ranking=7;
+
+                        break;
+                    case R.id.rank_platinum_wholesaler:
+                        ranking=8;
+
+                        break;
+                    case R.id.rank_ceo:
+                        ranking=9;
+
+                        break;
+                }
+
+                promoteRank(ranking);
+                return true;
+            }
+        });
+        popup.show();
+    }
+
+    private void promoteRank(int ranking){
+        if(ranking==0) return;
+        if(rank_id>=ranking){
+            tv_promote_info.setText("Promoting");
+            new Thread(() -> {
+                MyHttp myHttp=new MyHttp(MyHttp.RequesMethod.POST, new MyHttp.Response() {
+                    @Override
+                    public void onResponse(String response) {
+                        Log.e("PromoteRes ",response);
+                       postExecutor.execute(new Runnable() {
+                           @Override
+                           public void run() {
+                               try {
+                                   JSONObject jo=new JSONObject(response);
+                                   boolean success=jo.getString("status").equals("success");
+                                   if(success){
+                                       tv_promote_info.setText("Successfully promoted");
+                                       tv_rank.setText(ranks.get(ranking-1).getRank());
+                                   }
+                               }catch (Exception e){
+                                   Log.e("PromoteJSONErr ",e.toString());
+                                   tv_promote_info.setText("Please try again!");
+                               }
+                           }
+                       });
+
+                    }
+                    @Override
+                    public void onError(String msg) {
+                        Log.e("Err MY GP ",msg);
+                        postExecutor.execute(new Runnable() {
+                            @Override
+                            public void run() {
+                                tv_promote_info.setText("Please try again!");
+                            }
+                        });
+                    }
+                }).url(Routing.PROMOTE_RANK)
+                        .field("user_id",memberId)
+                        .field("rank_id",ranking+"")
+                        .field("auth_token",authToken);
+                myHttp.runTask();
+            }).start();
+        }else{
+            Toast.makeText(this, "Cannot promote!", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void removeUser() {
+        tv_remove_info.setText("Removing ..");
+        new Thread(() -> {
+            MyHttp myHttp=new MyHttp(MyHttp.RequesMethod.POST, new MyHttp.Response() {
+                @Override
+                public void onResponse(String response) {
+                    try {
+                        JSONObject jo=new JSONObject(response);
+                        boolean success=jo.getString("status").equals("success");
+                        if(success){
+                            finish();
+                        }
+                    }catch (Exception e){
+                        tv_remove_info.setText("Please try again!");
+                    }
+
+                }
+                @Override
+                public void onError(String msg) {
+                    Log.e("Err MY GP ",msg);
+                    tv_remove_info.setText("Please try again!");
+                }
+            }).url(Routing.REMOVE_MEMBER)
+                    .field("member_id",memberId)
+                    .field("user_id",userId)
+                    .field("group_id",MyGroupDetailActivity.groupId)
+                    .field("auth_token",authToken);
+            myHttp.runTask();
+        }).start();
+    }
+
     private void fetchProfileData(){
         new Thread(() -> {
             MyHttp myHttp=new MyHttp(MyHttp.RequesMethod.GET, new MyHttp.Response() {
@@ -271,10 +444,11 @@ public class ProfileActivity extends AppCompatActivity {
 
                 }
             }).url(Routing.GET_MEMBER_PROFILE+"?group_id="+groupId+"&member_id="+memberId);
-
             myHttp.runTask();
         }).start();
     }
+
+
 
     private void setProfileInfo(JSONObject jo) throws JSONException {
 

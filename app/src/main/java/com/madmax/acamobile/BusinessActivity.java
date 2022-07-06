@@ -72,6 +72,7 @@ public class BusinessActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(BusinessActivity.this,SaleListActivity.class);
+                intent.putExtra("customer_phone","yoe");
                 startActivity(intent);
             }
         });

@@ -46,6 +46,7 @@ public class SaleListActivity extends AppCompatActivity {
     SharedPreferences sharedPreferences;
     Executor postExecutor;
     String userId;
+    String customer_phone;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +60,7 @@ public class SaleListActivity extends AppCompatActivity {
         sharedPreferences=getSharedPreferences("GeneralData", Context.MODE_PRIVATE);
         userId=sharedPreferences.getString("userId",null);
         postExecutor= ContextCompat.getMainExecutor(this);
+        customer_phone=getIntent().getExtras().getString("customer_phone","yoe");
 
         setUpView();
     }
@@ -67,6 +69,7 @@ public class SaleListActivity extends AppCompatActivity {
         page=1;
         vouchers.clear();
         fetchSales(page);
+        adapter.notifyDataSetChanged();
         super.onResume();
     }
 
@@ -112,6 +115,7 @@ public class SaleListActivity extends AppCompatActivity {
                 MyHttp myHttp=new MyHttp(MyHttp.RequesMethod.GET, new MyHttp.Response() {
                     @Override
                     public void onResponse(String response) {
+
                         postExecutor.execute(new Runnable() {
                             @Override
                             public void run() {
@@ -128,11 +132,11 @@ public class SaleListActivity extends AppCompatActivity {
                     }
                     @Override
                     public void onError(String msg) {
-                        Log.e("ErrOrders ",msg);
+
                         pb.setVisibility(View.GONE);
 
                     }
-                }).url(Routing.GET_SALE+"?user_id="+userId+"&page="+page);
+                }).url(Routing.GET_SALE+"?user_id="+userId+"&page="+page+"&customer="+customer_phone);
 
                 myHttp.runTask();
             }).start();

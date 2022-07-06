@@ -34,18 +34,6 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.github.mikephil.charting.charts.LineChart;
-import com.github.mikephil.charting.components.AxisBase;
-import com.github.mikephil.charting.components.XAxis;
-import com.github.mikephil.charting.components.YAxis;
-import com.github.mikephil.charting.data.Entry;
-import com.github.mikephil.charting.data.LineData;
-import com.github.mikephil.charting.data.LineDataSet;
-import com.github.mikephil.charting.formatter.ValueFormatter;
-import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
-import com.google.android.material.datepicker.MaterialDatePicker;
-import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
 import com.google.android.material.navigation.NavigationView;
 import com.madmax.acamobile.adapters.MainPanelAdapter;
 import com.madmax.acamobile.app.AppUtils;
@@ -217,6 +205,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_app_upate:
                 startActivity(new Intent(MainActivity.this,AppUpdateActivity.class));
                 break;
+            case R.id.nav_customer:
+                startActivity(new Intent(MainActivity.this,CustomersActivity.class));
+                break;
+            case R.id.nav_investment:
+                startActivity(new Intent(MainActivity.this,InvestmentActivity.class));
         }
 
         return true;
@@ -242,7 +235,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         panelModels.add(new PanelModel("Voucher","file:///android_asset/voucher.png",2));
         panelModels.add(new PanelModel("Products Left","file:///android_asset/products.png",3));
         panelModels.add(new PanelModel("My Groups","file:///android_asset/mygroup.png",6));
-        panelModels.add(new PanelModel("Partners' Groups","file:///android_asset/partnergroup.png",7));
+        panelModels.add(new PanelModel("My Leader's Group","file:///android_asset/partnergroup.png",7));
 
     }
 

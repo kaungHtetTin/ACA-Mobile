@@ -18,7 +18,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.madmax.acamobile.OrderDetailActivity;
 import com.madmax.acamobile.R;
 import com.madmax.acamobile.app.AppUtils;
-import com.madmax.acamobile.app.Routing;
 import com.madmax.acamobile.models.VoucherModel;
 
 import java.util.ArrayList;
@@ -54,13 +53,13 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.Holder>{
 
 
         if(model.isSeen()&&model.isReceived()&& model.isSoldOut()){
-            holder.tv_status.setText("Received by agent");
+            holder.tv_status.setText("Received by distributor");
             holder.tv_status.setTextColor(Color.GREEN);
-            holder.orderLayout.setBackgroundColor(c.getResources().getColor(R.color.white));
+            holder.orderLayout.setBackgroundColor(c.getResources().getColor(R.color.seen_color));
         }else if(model.isSeen()&&model.isSoldOut()){
-            holder.tv_status.setText("Sent to Agent");
+            holder.tv_status.setText("Sent to distributor");
             holder.tv_status.setTextColor(Color.RED);
-            holder.orderLayout.setBackgroundColor(c.getResources().getColor(R.color.white));
+            holder.orderLayout.setBackgroundColor(c.getResources().getColor(R.color.seen_color));
         }else if(!model.isSeen()){
             holder.tv_status.setText("");
             holder.orderLayout.setBackgroundColor(c.getResources().getColor(R.color.noti_color));
@@ -79,11 +78,11 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.Holder>{
         RelativeLayout orderLayout;
         public Holder(@NonNull View itemView) {
             super(itemView);
-            tv_voucher_id=itemView.findViewById(R.id.tv_voucher_id);
-            tv_amount=itemView.findViewById(R.id.tv_amount);
+            tv_voucher_id=itemView.findViewById(R.id.tv_name);
+            tv_amount=itemView.findViewById(R.id.tv_phone);
             tv_date=itemView.findViewById(R.id.tv_date);
-            tv_status=itemView.findViewById(R.id.tv_status);
-            tv_group_name=itemView.findViewById(R.id.tv_group_name);
+            tv_status=itemView.findViewById(R.id.tv_is_agent);
+            tv_group_name=itemView.findViewById(R.id.tv_address);
             iv_group=itemView.findViewById(R.id.iv_group);
             orderLayout=itemView.findViewById(R.id.order_layout);
 

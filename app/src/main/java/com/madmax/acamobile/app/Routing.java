@@ -1,11 +1,13 @@
 package com.madmax.acamobile.app;
 
 public class Routing {
-    //public static String DOMAIN="http://www.madmaxmm.online/";
-    public static String DOMAIN="http://192.168.110.17/";
+//    public static String DOMAIN="http://www.zwhbusiness.com/";
+    public static String DOMAIN="http://192.168.154.17/";
     public static final String API=DOMAIN+"acamobile/api/";
     public static final String PROFILE_URL=DOMAIN+"acamobile/uploads/profiles/";
     public static final String GROUP_COVER_URL=DOMAIN+"acamobile/uploads/groups/";
+    public static final String COMPANY_INSTRUCTIONS="http://www.zwhbusiness.com/acaadmin/company_instructions.php";
+
 
     //Register and login
     public static final String SIGN_UP=API+"signup.php";
@@ -28,6 +30,7 @@ public class Routing {
     public static final String PRODUCT_LEFT_BY_ONE_STOCK=API+"stocks/productleftbyonestock.php";
     public static final String UPDATE_ITEM_LEFT=API+"stocks/updateitemleft.php";
     public static final String TRANSFER_PRODUCT=API+"stocks/transferproduct.php";
+    public static final String GET_INVESTMENT=API+"stocks/investment.php";
 
     //groups
     public static final String CREATE_GROUP=API+"groups/create.php";
@@ -40,6 +43,7 @@ public class Routing {
     public static final String DISABLE_GROUP=API+"groups/disable.php";
     public static final String GET_MEMBER_PROFILE=API+"groups/memberprofile.php";
     public static final String COMPARE_TARGET_PLAN_AND_ORDER_RATE=API+"groups/gettargetplanandorderrate.php";
+    public static final String REMOVE_MEMBER=API+"groups/disablemember.php";
 
 
     //partner groups
@@ -64,6 +68,7 @@ public class Routing {
     public static final String GET_SALE_DETAIL=API+"businesses/getsaledetail.php";
     public static final String GET_ORDER_BY_AGENT=API+"businesses/getorderbyagent.php";
     public static final String CANCEL_ORDER_BY_ADMIN=API+"businesses/cancelorder_admin.php";
+    public static final String UPDATE_DETAIL_PRICE=API+"businesses/update-detail-price.php";
 
     //target plan
     public static final String ADD_TARGET_PLAN=API+"targetplan/add.php";
@@ -90,6 +95,11 @@ public class Routing {
     public static final String CHECK_OTP=API+"users/check_otp.php";
     public static final String RESET_PASSWORD_WITH_OTP=API+"users/reset_password_with_opt.php";
     public static final String CHECK_ACC_VALIDATION=API+"users/check_validation.php";
+    public static final String PROMOTE_RANK=API+"users/promote.php";
+
+    //sale customers
+    public static final String GET_CUSTOMERS=API+"customers/get.php";
+    public static final String SEARCH_CUSTOMERS=API+"customers/search.php";
 
     //app update
     public static final String CHECK_UPDATE=API+"versioncontrol.php";

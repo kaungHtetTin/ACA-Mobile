@@ -264,7 +264,8 @@ public class SaleAndOrderRate{
 
             pb.setVisibility(View.GONE);
             lineChart.setVisibility(View.VISIBLE);
-            lineChart.getDescription().setText("Sale Vs Order");
+            if(group) lineChart.getDescription().setText("Sale");
+            else  lineChart.getDescription().setText("Sale Vs Order");
 
         } catch (Exception e) {
             Log.e("TargetCharErr ", e.toString());

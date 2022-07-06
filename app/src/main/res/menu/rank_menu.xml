@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/rank_agent"
+        android:title="Agent" />
+
+    <item
+        android:id="@+id/rank_special_agent"
+        android:title="Special Agent" />
+
+    <item
+        android:id="@+id/rank_vip"
+        android:title="VIP" />
+
+    <item
+        android:id="@+id/rank_dealer"
+        android:title="Dealer"/>
+
+    <item
+        android:id="@+id/rank_wholesaler"
+        android:title="Wholesaler" />
+
+    <item
+        android:id="@+id/rank_silver_wholesaler"
+        android:title="Silver Wholesaler" />
+
+    <item
+        android:id="@+id/rank_gold_wholesaler"
+        android:title="Gold Wholesaler" />
+
+    <item
+        android:id="@+id/rank_platinum_wholesaler"
+        android:title="Platinum Wholesaler" />
+
+    <item
+        android:id="@+id/rank_ceo"
+        android:title="CEO" />
+
+</menu>

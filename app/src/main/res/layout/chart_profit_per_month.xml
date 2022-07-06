@@ -26,7 +26,7 @@
                     android:id="@+id/tv_dashboard"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Profit In Year"
+                    android:text="Monthly Profit"
                     android:textColor="@color/white"
                     android:textSize="16sp"
                     android:textStyle="bold" />
@@ -80,7 +80,9 @@
                 android:id="@+id/lineChart"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
-                android:layout_below="@id/header_layout"/>
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_below="@id/header_layout" />
 
             <ProgressBar
                 android:id="@+id/pb"
@@ -105,7 +107,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/tv_investment"
+                android:id="@+id/tv_retail_amount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Total Investment"
@@ -114,12 +116,12 @@
                 android:layout_below="@id/tv_total"/>
 
             <TextView
-                android:id="@+id/tv_sale"
+                android:id="@+id/tv_wholesale"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tv_total"
                 android:layout_marginStart="40dp"
-                android:layout_toEndOf="@id/tv_investment"
+                android:layout_toEndOf="@id/tv_retail_amount"
                 android:text="Total Sale"
                 android:textSize="11sp" />
 
@@ -130,7 +132,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tv_total"
                 android:layout_marginStart="40dp"
-                android:layout_toEndOf="@id/tv_sale"
+                android:layout_toEndOf="@id/tv_wholesale"
                 android:text="Profit"
                 android:textSize="11sp" />
 
@@ -142,7 +144,7 @@
                 android:text="0"
                 android:layout_marginStart="5dp"
                 android:textColor="@color/color_on_primary"
-                android:layout_below="@id/tv_investment"
+                android:layout_below="@id/tv_retail_amount"
                 android:layout_marginBottom="15dp"/>
 
             <TextView
@@ -150,9 +152,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="0"
-                android:layout_alignStart="@id/tv_sale"
+                android:layout_alignStart="@id/tv_wholesale"
                 android:textColor="@color/color_on_primary"
-                android:layout_below="@id/tv_investment"
+                android:layout_below="@id/tv_retail_amount"
                 android:layout_marginBottom="15dp"/>
 
 
@@ -163,7 +165,7 @@
                 android:text="0"
                 android:layout_alignStart="@id/tv_profit"
                 android:textColor="@color/color_on_primary"
-                android:layout_below="@id/tv_investment"
+                android:layout_below="@id/tv_retail_amount"
                 android:layout_marginBottom="15dp"/>
 
 

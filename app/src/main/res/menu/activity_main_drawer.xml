@@ -3,6 +3,16 @@
 
     <group android:checkableBehavior="single">
 
+        <item android:id="@+id/nav_investment"
+            android:icon="@drawable/ic_investment"
+            android:iconTint="#999"
+            android:title="My Investment"/>
+
+        <item android:id="@+id/nav_customer"
+            android:icon="@drawable/ic_baseline_groups_24"
+            android:iconTint="#999"
+            android:title="My customers"/>
+
         <item android:id="@+id/nav_stock"
             android:icon="@drawable/ic_baseline_business_center_24"
             android:iconTint="#999"
@@ -24,14 +34,22 @@
             android:icon="@drawable/nav_edit_invoice"
             android:title="Edit Invoice" />
 
+        <item
+            android:id="@+id/nav_reset_password"
+            android:iconTint="#999"
+            android:icon="@drawable/ic_baseline_lock_24"
+            android:title="Reset Password" />
+
         <item android:id="@+id/nav_app_upate"
             android:icon="@drawable/ic_baseline_cloud_download_24"
             android:title="Check Update"/>
 
         <item
             android:id="@+id/nav_about"
+            android:iconTint="#999"
             android:icon="@drawable/ic_baseline_info_24"
             android:title="About" />
+
 
         <item
             android:id="@+id/nav_logOut"

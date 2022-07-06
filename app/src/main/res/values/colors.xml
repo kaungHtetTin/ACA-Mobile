@@ -10,10 +10,15 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
+
     <color name="my_text_color">#222</color>
     <color name="sign_up_progress">#16AD16</color>
     <color name="noti_color">#E7F3FF</color>
+    <color name="seen_color">#fff</color>
     <color name="light_green">#DCFFE1</color>
     <color name="light_yellow">#FFFADC</color>
     <color name="voucher_text">#001252</color>
+    <color name="warning_yellow">#FFFAD4</color>
+    <color name="my_layout">#efefef</color>
+
 </resources>

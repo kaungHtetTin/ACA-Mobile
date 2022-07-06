@@ -164,15 +164,5 @@
         android:textColor="@color/my_text_color"
         android:background="@drawable/bg_price_stroke"/>
 
-    <TextView
-        android:id="@+id/tv_discount"
-        android:text="Discount"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="5dp"
-        android:textColor="@color/my_text_color"
-        android:background="@drawable/bg_price_stroke"/>
-
 
 </LinearLayout>

@@ -72,9 +72,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.Holder> 
             holder.tv_2000.setText(model.getPrice(Price.two_thousand_price)+"");
             holder.tv_3000.setText(model.getPrice(Price.three_thousand_price)+"");
             holder.tv_5000.setText(model.getPrice(Price.five_thousand_price)+"");
-
             holder.tv_point.setText(model.getPoint()+"");
-            holder.tv_discount.setText(model.getDiscount()+"");
 
             if(rank_id>1){
                 holder.tv_200.setVisibility(View.VISIBLE);
@@ -113,7 +111,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.Holder> 
     public class Holder extends RecyclerView.ViewHolder{
 
         TextView tv_product_name,tv_retail,tv_5,tv_10,tv_20,tv_50,tv_100,tv_200,tv_300,tv_500,
-                tv_1000,tv_2000,tv_3000,tv_5000,tv_point,tv_discount;
+                tv_1000,tv_2000,tv_3000,tv_5000,tv_point;
 
         LinearLayout layout;
 
@@ -135,7 +133,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.Holder> 
            tv_3000=view.findViewById(R.id.tv_3000_price);
            tv_5000=view.findViewById(R.id.tv_5000_price);
            tv_point=view.findViewById(R.id.tv_point);
-           tv_discount=view.findViewById(R.id.tv_discount);
+
 
            layout=view.findViewById(R.id.product_layout);
 

@@ -111,8 +111,8 @@ public class TargetPlanAndOrderRate {
             JSONObject joMain = new JSONObject(response);
             JSONObject joTarget = joMain.getJSONObject("target_plan_detail");
             JSONObject joOrder=null;
-            if(joMain.has("order_detail")){
-                joOrder=joMain.getJSONObject("order_detail");
+            if(joMain.has("sale_detail")){
+                joOrder=joMain.getJSONObject("sale_detail");
             }
 
             JSONObject joPlan=joMain.getJSONObject("target_plan");
@@ -157,7 +157,7 @@ public class TargetPlanAndOrderRate {
             setComp1.setColor(Color.RED);
             setComp1.setAxisDependency(YAxis.AxisDependency.LEFT);
 
-            LineDataSet setComp2 = new LineDataSet(orderProducts, "Order Rate");
+            LineDataSet setComp2 = new LineDataSet(orderProducts, "Sale Rate");
             setComp2.setColor(Color.GREEN);
             setComp2.setAxisDependency(YAxis.AxisDependency.LEFT);
 
@@ -184,6 +184,7 @@ public class TargetPlanAndOrderRate {
 
             pb.setVisibility(View.GONE);
             lineChart.setVisibility(View.VISIBLE);
+            lineChart.getDescription().setText("");
 
         } catch (Exception e) {
             Log.e("TargetCharErr ", e.toString());

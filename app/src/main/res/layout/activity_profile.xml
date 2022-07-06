@@ -225,6 +225,66 @@
                     android:layout_marginTop="5dp"
                     android:background="#ccc" />
 
+                <LinearLayout
+                    android:id="@+id/promote_layout"
+                    android:layout_width="match_parent"
+                    android:orientation="vertical"
+                    android:layout_marginTop="10dp"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#0f0"
+                        android:padding="2dp"
+                        android:text="Promote"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/tv_promote_info"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="2dp"
+                        android:text="Promote to higher rank"
+                        />
+
+                    <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="5dp"
+                        android:background="#ccc" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/remove_layout"
+                    android:layout_width="match_parent"
+                    android:orientation="vertical"
+                    android:layout_marginTop="10dp"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#f00"
+                        android:padding="2dp"
+                        android:text="Remove"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/tv_remove_info"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="2dp"
+                        android:text="Permanently remove this user"
+                        />
+
+                    <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="5dp"
+                        android:background="#ccc" />
+                </LinearLayout>
+
             </LinearLayout>
 
             <TextView

@@ -43,7 +43,7 @@ public class MyOrderDetailActivity extends AppCompatActivity {
     LinearLayout mLayout;
     //footer
     TextView tv_quantity_total,tv_foc_total,tv_amount_total,tv_point_total;
-    TextView tv_date,tv_voucher_id,tv_group_name,tv_status;
+    TextView tv_date,tv_voucher_id,tv_group_name,tv_status,tv_price_edit;
     //main layer
     TextView tv_total_amount,tv_total_point,tv_total_extra_cost;
     Button bt_cancel,bt_received,bt_call;
@@ -99,14 +99,15 @@ public class MyOrderDetailActivity extends AppCompatActivity {
         tv_foc_total=findViewById(R.id.tv_foc_total);
         tv_point_total=findViewById(R.id.tv_point_total);
         tv_quantity_total=findViewById(R.id.tv_quantity_total);
-        tv_status=findViewById(R.id.tv_status);
+        tv_status=findViewById(R.id.tv_is_agent);
         tv_total_amount=findViewById(R.id.tv_total_amount);
         tv_total_point=findViewById(R.id.tv_total_point);
-        tv_voucher_id=findViewById(R.id.tv_voucher_id);
+        tv_voucher_id=findViewById(R.id.tv_name);
         tv_voucher_id.setText("VoucherId - "+voucher_id);
         tv_total_extra_cost=findViewById(R.id.tv_total_extra_cost);
         tv_date=findViewById(R.id.tv_date);
-        tv_group_name=findViewById(R.id.tv_group_name);
+        tv_group_name=findViewById(R.id.tv_address);
+        tv_price_edit=findViewById(R.id.tv_price_edit);
         bt_cancel=findViewById(R.id.bt_cancel);
         bt_received=findViewById(R.id.bt_received);
         bt_call=findViewById(R.id.bt_call);
@@ -187,10 +188,15 @@ public class MyOrderDetailActivity extends AppCompatActivity {
                     int product_id=joProduct.getInt("product_id");
                     int quantity=joProduct.getInt("quantity");
                     int foc=  joProduct.getInt("foc");
-                    double amount=joProduct.getDouble("amount");
+
+                    //double amount=joProduct.getDouble("amount");
+
                     float price=(float) joProduct.getDouble("price");
                     int discount=joProduct.getInt("discount");
                     float point=(float) joProduct.getDouble("point");
+
+                    double amount=quantity*price;
+
                     OrderModel o=new OrderModel(product_id,price,discount,point,quantity,amount,foc);
                     o.setProfit(0);
                     orders.add(o);
@@ -237,9 +243,11 @@ public class MyOrderDetailActivity extends AppCompatActivity {
                 boolean isSoldOut=joOrder.getInt("is_sold_out")==1;
                 boolean isReceived=joOrder.getInt("is_received")==1;
                 boolean seen=joOrder.getInt("seen")==1;
+                boolean price_edit=joOrder.getInt("price_edit")==1;
                 String extraCost=joOrder.getString("agent_extra_cost");
                 tv_total_extra_cost.setText(extraCost);
 
+                if(price_edit)tv_price_edit.setVisibility(View.VISIBLE);
 
                 if(isSoldOut){
                     bt_cancel.setVisibility(View.GONE);

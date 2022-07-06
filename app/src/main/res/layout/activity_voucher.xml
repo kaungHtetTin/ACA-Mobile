@@ -78,7 +78,7 @@
 
                 <RadioButton
                     android:id="@+id/rb_agent"
-                    android:text="Agent"
+                    android:text="Wholesale"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
 
@@ -145,6 +145,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
             android:layout_below="@id/tv_transfer"
+            android:textColor="@color/white"
             android:layout_height="wrap_content"
             android:text="Create"/>
 

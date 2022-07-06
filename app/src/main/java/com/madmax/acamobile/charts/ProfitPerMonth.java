@@ -207,9 +207,9 @@ public class ProfitPerMonth {
 
             if(total_profit<0)total_profit=0;
 
-            tv_total_profit.setText(total_profit+"");
-            tv_total_investment.setText(total_investment+"");
-            tv_total_sale.setText(total_sale+"");
+            tv_total_profit.setText(AppUtils.getTwoDecimalDouble((double)total_profit));
+            tv_total_investment.setText(AppUtils.getTwoDecimalDouble((double)total_investment));
+            tv_total_sale.setText(AppUtils.getTwoDecimalDouble((double)total_sale));
 
 
             LineDataSet setComp1 = new LineDataSet(sales, "Sale");

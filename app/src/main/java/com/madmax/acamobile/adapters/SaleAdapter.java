@@ -5,15 +5,16 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.madmax.acamobile.InvoiceActivity;
-import com.madmax.acamobile.OrderDetailActivity;
 import com.madmax.acamobile.R;
-import com.madmax.acamobile.VoucherActivity;
 import com.madmax.acamobile.app.AppUtils;
+import com.madmax.acamobile.app.MyDialog;
 import com.madmax.acamobile.models.VoucherModel;
 
 import java.util.ArrayList;
@@ -62,11 +63,10 @@ public class SaleAdapter extends RecyclerView.Adapter<SaleAdapter.Holder>{
 
         public Holder(@NonNull View itemView) {
             super(itemView);
-            tv_voucher_id=itemView.findViewById(R.id.tv_voucher_id);
-            tv_amount=itemView.findViewById(R.id.tv_amount);
+            tv_voucher_id=itemView.findViewById(R.id.tv_name);
+            tv_amount=itemView.findViewById(R.id.tv_phone);
             tv_date=itemView.findViewById(R.id.tv_date);
             tv_customer_name=itemView.findViewById(R.id.tv_customer_name);
-
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -79,6 +79,11 @@ public class SaleAdapter extends RecyclerView.Adapter<SaleAdapter.Holder>{
                     c.startActivity(intent);
                 }
             });
+
         }
     }
+
+
+
+
 }

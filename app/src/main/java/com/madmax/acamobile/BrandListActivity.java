@@ -22,12 +22,14 @@ public class BrandListActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
     String key;
+    String customer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_brand_list);
         key=getIntent().getExtras().getString("key");
+        customer=getIntent().getExtras().getString("customer",null);
         Objects.requireNonNull(getSupportActionBar()).setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setTitle("Brands");
@@ -38,7 +40,7 @@ public class BrandListActivity extends AppCompatActivity {
         recyclerView=findViewById(R.id.recyclerView);
 
         LinearLayoutManager lm=new LinearLayoutManager(this);
-        BrandAdapter adapter=new BrandAdapter(this, Initializer.brands,key);
+        BrandAdapter adapter=new BrandAdapter(this, Initializer.brands,key,customer);
         recyclerView.setLayoutManager(lm);
         recyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();

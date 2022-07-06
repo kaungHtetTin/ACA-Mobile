@@ -53,6 +53,4 @@
     <item
         android:id="@+id/menu_5000"
         android:title="5000 Price" />
-
-
 </menu>

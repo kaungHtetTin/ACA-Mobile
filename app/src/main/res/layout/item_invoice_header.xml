@@ -45,18 +45,18 @@
     <TextView
         android:id="@+id/tv_price"
         android:layout_width="45dp"
-        android:text="Price"
-        android:gravity="center"
+        android:layout_height="32dp"
+        android:layout_toStartOf="@id/tv_phone"
         android:background="@drawable/bg_noti_blue_table_stoke"
-        android:textSize="11sp"
-        android:textStyle="bold"
+        android:gravity="center"
+        android:text="Price"
         android:textColor="@color/my_text_color"
-        android:layout_toStartOf="@id/tv_amount"
-        android:layout_height="32dp"/>
+        android:textSize="11sp"
+        android:textStyle="bold" />
 
 
     <TextView
-        android:id="@+id/tv_amount"
+        android:id="@+id/tv_phone"
         android:layout_width="65dp"
         android:layout_height="32dp"
         android:layout_toStartOf="@id/tv3"

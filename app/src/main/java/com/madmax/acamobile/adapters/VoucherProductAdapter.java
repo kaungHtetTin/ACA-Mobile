@@ -78,11 +78,10 @@ public class VoucherProductAdapter extends RecyclerView.Adapter<VoucherProductAd
                 int left=p.getCount();
                 holder.tv_left.setText(left+"");
                 if(totalQty>left){
-                    holder.mLayout.setBackgroundColor(c.getResources().getColor(R.color.light_yellow));
+                    holder.mLayout.setBackgroundColor(c.getResources().getColor(R.color.warning_yellow));
                     OrderDetailActivity.isEnoughToSend=false;
-                }else{
-                    holder.mLayout.setBackgroundColor(c.getResources().getColor(R.color.white));
-
+                } else{
+                    holder.mLayout.setBackgroundColor(c.getResources().getColor(R.color.my_layout));
                 }
 
                 break;
@@ -124,10 +123,10 @@ public class VoucherProductAdapter extends RecyclerView.Adapter<VoucherProductAd
                 int left= finalP.getCount();
                 holder.tv_left.setText(left+"");
                 if(quantity>left){
-                    holder.mLayout.setBackgroundColor(c.getResources().getColor(R.color.light_yellow));
+                    holder.mLayout.setBackgroundColor(c.getResources().getColor(R.color.warning_yellow));
                     OrderDetailActivity.isEnoughToSend=false;
                 }else{
-                    holder.mLayout.setBackgroundColor(c.getResources().getColor(R.color.white));
+                    holder.mLayout.setBackgroundColor(c.getResources().getColor(R.color.my_layout));
                     OrderDetailActivity.isEnoughToSend=true;
                 }
 

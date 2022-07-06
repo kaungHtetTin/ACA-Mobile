@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,8 +18,6 @@ import com.madmax.acamobile.interfaces.GroupSelectListener;
 import com.madmax.acamobile.models.MyGroupModel;
 
 import java.util.ArrayList;
-
-import de.hdodenhof.circleimageview.CircleImageView;
 
 public class OrderCreateGroupAdapter extends RecyclerView.Adapter <OrderCreateGroupAdapter.Holder> {
 
@@ -67,7 +64,7 @@ public class OrderCreateGroupAdapter extends RecyclerView.Adapter <OrderCreateGr
         ImageView iv_group_thumb;
         public Holder(View view){
             super(view);
-            tv_group_name=view.findViewById(R.id.tv_group_name);
+            tv_group_name=view.findViewById(R.id.tv_address);
             tv_group_status=view.findViewById(R.id.tv_group_status);
             iv_group_thumb=view.findViewById(R.id.iv_group_thumb);
             iv_group_thumb.setClipToOutline(true);

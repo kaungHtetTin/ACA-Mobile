@@ -55,7 +55,7 @@ public class OrderDetailActivity extends AppCompatActivity {
 
     //footer
     TextView tv_quantity_total,tv_foc_total,tv_amount_total,tv_point_total;
-    TextView tv_left_header,tv_left_footer,tv_date;
+    TextView tv_left_header,tv_left_footer,tv_date,tv_price_edit;
 
     //main layer
     TextView tv_total_amount,tv_total_point,tv_voucher_id,tv_total_extra_cost,tv_order_by,
@@ -80,6 +80,7 @@ public class OrderDetailActivity extends AppCompatActivity {
     String currentUserId,authToken;
     SharedPreferences sharedPreferences;
     public static boolean isEnoughToSend=true;
+    public static boolean priceEditable=true;
 
     int initial_index=0,target_index=0;
 
@@ -134,7 +135,7 @@ public class OrderDetailActivity extends AppCompatActivity {
 
         tv_total_amount=findViewById(R.id.tv_total_amount);
         tv_total_point=findViewById(R.id.tv_total_point);
-        tv_voucher_id=findViewById(R.id.tv_voucher_id);
+        tv_voucher_id=findViewById(R.id.tv_name);
         tv_voucher_id.setText("VoucherId - "+voucher_id);
         tv_left_footer=findViewById(R.id.tv_left_footer);
         tv_left_header=findViewById(R.id.tv_left_header);
@@ -147,6 +148,7 @@ public class OrderDetailActivity extends AppCompatActivity {
         tv_group_name=findViewById(R.id.tv_group_name);
         tv_order_detail=findViewById(R.id.tv_order_detail);
         tv_transfer=findViewById(R.id.tv_transfer);
+        tv_price_edit=findViewById(R.id.tv_price_edit);
 
         tv_date.setText(AppUtils.formatTime(Long.parseLong(voucher_id)*1000));
 
@@ -265,7 +267,9 @@ public class OrderDetailActivity extends AppCompatActivity {
                 tv_group_name.setText(groupName);
             }
 
-            adapter=new OrderDetailProductAdapter(this,orders,stocks.get(0),isSoldOut);
+
+
+            adapter=new OrderDetailProductAdapter(this,orders,stocks.get(0),isSoldOut,voucher_id);
             selectedStockId=stocks.get(0).getStock_id();
             recyclerView.setAdapter(adapter);
             adapter.notifyDataSetChanged();
@@ -290,10 +294,13 @@ public class OrderDetailActivity extends AppCompatActivity {
             int product_id=joProduct.getInt("product_id");
             int quantity=joProduct.getInt("quantity");
             int foc=  joProduct.getInt("foc");
-            double amount=joProduct.getDouble("amount");
+           // double amount=joProduct.getDouble("amount");
             float price=(float) joProduct.getDouble("price");
             int discount=joProduct.getInt("discount");
             float point=(float) joProduct.getDouble("point");
+
+            double amount=quantity*price;
+
             OrderModel o=new OrderModel(product_id,price,discount,point,quantity,amount,foc);
             o.setProfit(0);
             orders.add(o);
@@ -347,9 +354,15 @@ public class OrderDetailActivity extends AppCompatActivity {
        JSONObject joOrder=jo.getJSONObject("order");
        isSoldOut=joOrder.getInt("is_sold_out")==1;
        boolean isReceived=joOrder.getInt("is_received")==1;
+       boolean price_edit=joOrder.getInt("price_edit")==1;
        String extraCost=joOrder.getString("admin_extra_cost");
        tv_total_extra_cost.setText(extraCost);
+
+       if(price_edit)tv_price_edit.setVisibility(View.VISIBLE);
+
+
        if(isSoldOut){
+           priceEditable=false;
            sp_stock.setVisibility(View.GONE);
            tv_left_header.setVisibility(View.GONE);
            tv_left_footer.setVisibility(View.GONE);
@@ -358,10 +371,12 @@ public class OrderDetailActivity extends AppCompatActivity {
 
            if(isReceived){
                bt_cancel.setEnabled(false);
+
            }
 
        }else{
            setStockSpinner();
+           priceEditable=true;
        }
    }
 

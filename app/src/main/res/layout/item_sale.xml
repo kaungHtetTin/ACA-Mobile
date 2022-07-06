@@ -23,7 +23,7 @@
             android:src="@drawable/voucher"/>
 
         <TextView
-            android:id="@+id/tv_voucher_id"
+            android:id="@+id/tv_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
@@ -34,11 +34,11 @@
             android:textStyle="italic|bold" />
 
         <TextView
-            android:id="@+id/tv_amount"
+            android:id="@+id/tv_phone"
             android:layout_width="wrap_content"
             android:layout_margin="5dp"
             android:textColor="?android:textColorPrimary"
-            android:layout_below="@id/tv_voucher_id"
+            android:layout_below="@id/tv_name"
             android:layout_toEndOf="@id/iv_group"
             android:text="Amount - 123456"
             android:layout_height="wrap_content"/>
@@ -49,7 +49,7 @@
             android:layout_width="wrap_content"
             android:layout_margin="5dp"
             android:textColor="?android:textColorPrimary"
-            android:layout_below="@id/tv_amount"
+            android:layout_below="@id/tv_phone"
             android:layout_toEndOf="@id/iv_group"
             android:text="Customer - Kaung Htet Tin"
             android:layout_height="wrap_content"/>
@@ -64,7 +64,6 @@
             android:layout_alignParentEnd="true"
             android:text="12/12/2022"
             android:layout_margin="5dp"/>
-
 
     </RelativeLayout>
 

@@ -23,7 +23,7 @@
         android:gravity="center"
         android:background="@drawable/bg_edit_stroke"
         android:textSize="14sp"
-        android:textColor="@color/my_text_color"
+        android:textColor="#222"
         android:layout_height="32dp"/>
 
 
@@ -35,7 +35,7 @@
         android:gravity="center"
         android:background="@drawable/bg_edit_stroke"
         android:textSize="14sp"
-        android:textColor="@color/my_text_color"
+        android:textColor="#222"
         android:layout_height="32dp"/>
 
     <TextView
@@ -58,16 +58,7 @@
         android:layout_height="32dp"/>
 
     <TextView
-        android:id="@+id/tv_discount"
-        android:layout_width="100dp"
-        android:gravity="center"
-        android:background="@drawable/bg_price_stroke"
-        android:textSize="14sp"
-        android:textColor="@color/my_text_color"
-        android:layout_height="32dp"/>
-
-    <TextView
-        android:id="@+id/tv_amount"
+        android:id="@+id/tv_phone"
         android:layout_width="120dp"
         android:gravity="center"
         android:background="@drawable/bg_price_stroke"
@@ -99,6 +90,16 @@
 
     <TextView
         android:id="@+id/tv_profit"
+        android:layout_width="100dp"
+        android:gravity="center"
+        android:background="@drawable/bg_stroke_light_yellow"
+        android:textSize="14sp"
+        android:padding="5dp"
+        android:textColor="@color/my_text_color"
+        android:layout_height="32dp"/>
+
+    <TextView
+        android:id="@+id/tv_profit_percent"
         android:layout_width="100dp"
         android:gravity="center"
         android:background="@drawable/bg_stroke_light_yellow"

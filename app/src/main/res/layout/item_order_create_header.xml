@@ -50,24 +50,17 @@
         android:layout_height="32dp"/>
 
     <TextView
+        android:id="@+id/tv_price_header"
         android:layout_width="100dp"
-        android:text="Price"
+        android:text="Price (auto)"
         android:gravity="center"
         android:background="@drawable/bg_noti_blue_table_stoke"
         android:textSize="14sp"
         android:textStyle="bold"
         android:textColor="@color/my_text_color"
-        android:layout_height="32dp"/>
+        android:layout_height="32dp"
+        app:drawableEndCompat="@drawable/ic_baseline_keyboard_arrow_down_24" />
 
-    <TextView
-        android:layout_width="100dp"
-        android:text="Discount"
-        android:gravity="center"
-        android:background="@drawable/bg_noti_blue_table_stoke"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        android:textColor="@color/my_text_color"
-        android:layout_height="32dp"/>
 
     <TextView
         android:layout_width="120dp"
@@ -115,5 +108,19 @@
         android:textColor="@color/my_text_color"
         android:layout_height="32dp"
         app:drawableEndCompat="@drawable/ic_baseline_keyboard_arrow_down_24" />
+
+    <TextView
+
+        android:layout_width="100dp"
+        android:text="Percent"
+        android:gravity="center"
+        android:background="@drawable/bg_noti_blue_table_stoke"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:padding="5dp"
+        android:textColor="@color/my_text_color"
+        android:layout_height="32dp"/>
+
+
 
 </LinearLayout>

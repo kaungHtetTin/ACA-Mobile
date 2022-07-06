@@ -36,14 +36,18 @@
         <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/drawable/ic_baseline_add_circle_outline_24.xml" value="0.1455" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/drawable/ic_baseline_business_center_24.xml" value="0.157" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/drawable/ic_baseline_cancel_24.xml" value="0.1455" />
+        <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/drawable/ic_baseline_co_present_24.xml" value="0.169" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/drawable/ic_baseline_how_to_reg_24.xml" value="0.1205" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/drawable/ic_baseline_info_24.xml" value="0.1205" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/drawable/ic_baseline_keyboard_arrow_down_24.xml" value="0.1455" />
+        <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/drawable/ic_baseline_lock_24.xml" value="0.1265" />
+        <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/drawable/ic_baseline_more_vert_24.xml" value="0.1265" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/drawable/ic_baseline_payment_24.xml" value="0.1265" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.1205" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.1455" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/drawable/ic_business_read.xml" value="0.1455" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/drawable/ic_business_red.xml" value="0.1455" />
+        <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/drawable/item_investment_header.xml" value="0.169" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/drawable/nav_edit_invoice.xml" value="0.1205" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/drawable/table_stroke_with_notiblue.xml" value="0.1455" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/layout/activity_about_group.xml" value="0.22395833333333334" />
@@ -53,19 +57,22 @@
         <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/layout/activity_app_update.xml" value="0.4" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/layout/activity_brand_list.xml" value="0.22395833333333334" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/layout/activity_business.xml" value="0.4" />
+        <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/layout/activity_company_instruction.xml" value="0.22395833333333334" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/layout/activity_create_order.xml" value="0.2" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/layout/activity_create_order2.xml" value="0.22395833333333334" />
+        <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/layout/activity_customers.xml" value="0.22395833333333334" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/layout/activity_data_update.xml" value="0.22395833333333334" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/layout/activity_forget_password.xml" value="0.22395833333333334" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/layout/activity_group_setting.xml" value="0.264" />
-        <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/layout/activity_invoice.xml" value="0.4" />
+        <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/layout/activity_investment.xml" value="0.22395833333333334" />
+        <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/layout/activity_invoice.xml" value="0.264" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/layout/activity_invoice_edit.xml" value="0.4" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/layout/activity_login.xml" value="0.2" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/layout/activity_main.xml" value="0.4" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/layout/activity_my_group.xml" value="0.22395833333333334" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/layout/activity_my_group_detail.xml" value="0.22395833333333334" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/layout/activity_my_order.xml" value="0.22395833333333334" />
-        <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/layout/activity_my_order_detail.xml" value="0.2" />
+        <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/layout/activity_my_order_detail.xml" value="0.264" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/layout/activity_order.xml" value="0.22395833333333334" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/layout/activity_order_detail.xml" value="0.2" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/layout/activity_partner_group_detail.xml" value="0.22395833333333334" />
@@ -76,6 +83,7 @@
         <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/layout/activity_product_list.xml" value="0.22395833333333334" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/layout/activity_product_transfer.xml" value="0.264" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/layout/activity_profile.xml" value="0.22395833333333334" />
+        <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/layout/activity_register.xml" value="0.22395833333333334" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/layout/activity_reset_password.xml" value="0.22395833333333334" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/layout/activity_sale_list.xml" value="0.22395833333333334" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/layout/activity_sale_rate.xml" value="0.264" />
@@ -95,9 +103,9 @@
         <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/layout/add_stock_dialog.xml" value="0.22395833333333334" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/layout/app_bar_main.xml" value="0.1596009975062344" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/layout/chart_filtering.xml" value="0.6" />
-        <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/layout/chart_profit_on_each_item_per_month.xml" value="0.536" />
+        <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/layout/chart_profit_on_each_item_per_month.xml" value="0.264" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/layout/chart_profit_per_month.xml" value="0.264" />
-        <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/layout/chart_retial_and_agent_rate.xml" value="0.4" />
+        <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/layout/chart_retial_and_agent_rate.xml" value="0.536" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/layout/chart_sale_and_order_rate.xml" value="0.22395833333333334" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/layout/chart_sale_rate_in_month.xml" value="0.4" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/layout/chart_targetplan_and_order.xml" value="0.4" />
@@ -113,7 +121,11 @@
         <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/layout/ic_baseline_date_range_24.xml" value="0.22395833333333334" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/layout/item_app.xml" value="0.22395833333333334" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/layout/item_brand.xml" value="0.264" />
+        <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/layout/item_customer.xml" value="0.264" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/layout/item_group_for_order.xml" value="0.4" />
+        <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/layout/item_investment.xml" value="0.22291666666666668" />
+        <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/layout/item_investment_footer.xml" value="0.22291666666666668" />
+        <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/layout/item_investment_header.xml" value="0.22291666666666668" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/layout/item_invoice.xml" value="0.4" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/layout/item_invoice_footer.xml" value="0.536" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/layout/item_invoice_header.xml" value="0.4" />
@@ -128,7 +140,7 @@
         <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/layout/item_order_create1.xml" value="0.22395833333333334" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/layout/item_order_create_footer.xml" value="0.22395833333333334" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/layout/item_order_create_header.xml" value="0.264" />
-        <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/layout/item_order_detail.xml" value="0.4" />
+        <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/layout/item_order_detail.xml" value="0.264" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/layout/item_order_detail_footer.xml" value="0.22395833333333334" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/layout/item_order_detail_header.xml" value="0.22395833333333334" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/layout/item_orders.xml" value="0.22395833333333334" />
@@ -154,8 +166,13 @@
         <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/layout/sale_rate_in_a_product.xml" value="0.22395833333333334" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/layout/spinner_product.xml" value="0.22395833333333334" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/menu-v26/activity_main_drawer.xml" value="0.22395833333333334" />
+        <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/menu-v26/too_menu.xml" value="0.2046875" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/menu/activity_main_drawer.xml" value="0.22395833333333334" />
+        <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/menu/pop_up_voucher_menu.xml" value="0.22395833333333334" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/menu/price_index_menu.xml" value="0.22395833333333334" />
+        <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/menu/price_menu.xml" value="0.22291666666666668" />
+        <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/menu/rank_menu.xml" value="0.22291666666666668" />
+        <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/menu/too_menu.xml" value="0.22395833333333334" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/AcAmobile/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1" />
       </map>

@@ -54,7 +54,7 @@ public class AboutGroupActivity extends AppCompatActivity {
     }
 
     private void setUpView(){
-        tv_group_name=findViewById(R.id.tv_group_name);
+        tv_group_name=findViewById(R.id.tv_address);
         tv_group_description=findViewById(R.id.tv_group_description);
         tv_join_date=findViewById(R.id.tv_join_date);
         tv_create_date=findViewById(R.id.tv_create_date);
@@ -144,7 +144,7 @@ public class AboutGroupActivity extends AppCompatActivity {
             toolbarLayout.setTitle(groupName);
             AppUtils.setPhotoFromRealUrl(iv_collapse,Routing.GROUP_COVER_URL+groupImage);
             AppUtils.setPhotoFromRealUrl(iv_group_small,Routing.GROUP_COVER_URL+groupImage);
-            tv_create_date.setText(AppUtils.formatTime(createAt));
+            tv_create_date.setText(AppUtils.formatTime(createAt*1000));
 
             tv_name.setText(founderName);
             AppUtils.setPhotoFromRealUrl(iv_profile,Routing.PROFILE_URL+founderProfile);

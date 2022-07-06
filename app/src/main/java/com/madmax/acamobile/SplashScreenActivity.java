@@ -51,7 +51,7 @@ public class SplashScreenActivity extends AppCompatActivity {
                         public void onAuthChecker(boolean auth) {
                             Intent intent;
                             if(auth){
-                                intent = new Intent(SplashScreenActivity.this, MainActivity.class);
+                                intent = new Intent(SplashScreenActivity.this, CompanyInstructionActivity.class);
                             }else{
                                 intent = new Intent(SplashScreenActivity.this, LoginActivity.class);
                             }

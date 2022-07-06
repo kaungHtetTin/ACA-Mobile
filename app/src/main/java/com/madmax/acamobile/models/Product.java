@@ -4,7 +4,6 @@ public class Product{
     int product_id;
     String product_name;
     int count;
-
     boolean isQtyChange;  // this is used for product transfer among stocks
 
     public Product(int product_id, String product_name, int count) {

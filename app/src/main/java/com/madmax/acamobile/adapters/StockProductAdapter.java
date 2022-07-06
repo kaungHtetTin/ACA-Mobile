@@ -72,6 +72,7 @@ public class StockProductAdapter extends RecyclerView.Adapter<StockProductAdapte
                     });
                 }else{
                     holder.tv.setBackgroundResource(R.drawable.bg_stroke_green);
+                    holder.tv.setTextColor(Color.BLACK);
                 }
             }
 
@@ -98,11 +99,14 @@ public class StockProductAdapter extends RecyclerView.Adapter<StockProductAdapte
                         LinearLayout.LayoutParams.MATCH_PARENT
                 );
 
-                if(position==data.size()-1)textView.setBackgroundResource(R.drawable.bg_stroke_green);
-
                 textView.setLayoutParams(params);
                 textView.setGravity(Gravity.CENTER);
                 textView.setTextColor(c.getResources().getColor(R.color.my_text_color));
+
+                if(position==data.size()-1){
+                    textView.setBackgroundResource(R.drawable.bg_stroke_green);
+                    textView.setTextColor(Color.BLACK);
+                }
                 holder.mLayout.addView(textView);
 
             }

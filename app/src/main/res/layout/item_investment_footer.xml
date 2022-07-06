@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_weight="1.5"
+        android:text="Total"
+        android:gravity="center"
+        android:background="@drawable/bg_stroke_green"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:padding="5dp"
+        android:textColor="#222"
+        android:layout_height="32dp"/>
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:id="@+id/tv_quantity_total"
+        android:text="-"
+        android:gravity="center"
+        android:background="@drawable/bg_stroke_green"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:textColor="#222"
+        android:layout_height="32dp"/>
+
+    <TextView
+        android:id="@+id/tv_total_amount"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:text="0"
+        android:gravity="center"
+        android:background="@drawable/bg_stroke_green"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:textColor="#222"
+        android:layout_height="32dp"/>
+
+
+</LinearLayout>

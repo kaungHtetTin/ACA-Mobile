@@ -20,6 +20,15 @@
         android:theme="@style/Theme.BusinessMaster"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".CompanyInstructionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".InvestmentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CustomersActivity"
+            android:exported="false" />
+        <activity
             android:name=".AppUpdateActivity"
             android:exported="false" />
         <activity

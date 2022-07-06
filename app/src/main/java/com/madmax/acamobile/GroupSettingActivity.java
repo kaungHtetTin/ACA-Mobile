@@ -283,7 +283,7 @@ public class GroupSettingActivity extends AppCompatActivity {
             AppUtils.setPhotoFromRealUrl(iv_group_small,MyGroupDetailActivity.imageUrl);
             AppUtils.setPhotoFromRealUrl(iv_collapse,MyGroupDetailActivity.imageUrl);
 
-            tv_date.setText(AppUtils.formatTime(time));
+            tv_date.setText(AppUtils.formatTime(time*1000));
             toolbarLayout.setTitle(name);
 
             if(jo.has("target_plan")){

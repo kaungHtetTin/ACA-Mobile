@@ -59,7 +59,7 @@ public class PartnerGroupListActivity extends AppCompatActivity {
         authToken=sharedPreferences.getString("authToken",null);
         postExecutor= ContextCompat.getMainExecutor(this);
 
-        setTitle("Partner Groups");
+        setTitle("Leader Groups");
         Objects.requireNonNull(getSupportActionBar()).setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setUpView();

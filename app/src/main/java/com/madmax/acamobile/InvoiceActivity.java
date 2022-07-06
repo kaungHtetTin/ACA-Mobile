@@ -24,25 +24,25 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.ParcelFileDescriptor;
 import android.provider.MediaStore;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.madmax.acamobile.adapters.InvoiceProductAdapter;
 import com.madmax.acamobile.app.AppUtils;
+import com.madmax.acamobile.app.MyDialog;
 import com.madmax.acamobile.app.MyHttp;
 import com.madmax.acamobile.app.Routing;
 import com.madmax.acamobile.models.OrderModel;
-import com.madmax.acamobile.models.VoucherModel;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -74,7 +74,10 @@ public class InvoiceActivity extends AppCompatActivity {
     TextView tv_customer_name,tv_customer_phone,tv_customer_address;
     TextView tv_company_name,tv_company_phone,tv_company_address;
     TextView tv_voucher_type,tv_voucher_id,tv_voucher_stock,tv_voucher_date,tv_total_point;
+    TextView tv_extra_cost;
     FrameLayout invoiceLayout;
+    LinearLayout layoutExtraCost;
+    EditText et_extra_cost;
 
     RecyclerView recyclerView;
 
@@ -91,6 +94,7 @@ public class InvoiceActivity extends AppCompatActivity {
     Executor postExecutor;
     String currentUserId,authToken;
     boolean sale;
+    int extra_cost=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -143,20 +147,23 @@ public class InvoiceActivity extends AppCompatActivity {
         tv_customer_name=findViewById(R.id.tv_customer_name);
         tv_customer_phone=findViewById(R.id.tv_customer_phone);
         tv_voucher_type=findViewById(R.id.tv_voucher_type);
-        tv_voucher_id=findViewById(R.id.tv_voucher_id);
+        tv_voucher_id=findViewById(R.id.tv_name);
         tv_voucher_stock=findViewById(R.id.tv_voucher_stock);
         tv_voucher_date=findViewById(R.id.tv_voucher_date);
         tv_total_point=findViewById(R.id.tv_total_point);
+        et_extra_cost=findViewById(R.id.et_extra_cost);
 
         tv_company_address=findViewById(R.id.tv_company_address);
         tv_company_name=findViewById(R.id.tv_company_name);
         tv_company_phone=findViewById(R.id.tv_company_phone);
+        tv_extra_cost=findViewById(R.id.tv_extra_cost);
         iv_logo=findViewById(R.id.iv_logo);
         pb=findViewById(R.id.pb);
+        layoutExtraCost=findViewById(R.id.layout_extra_cost);
 
         LinearLayoutManager lm=new LinearLayoutManager(this);
         recyclerView.setLayoutManager(lm);
-        adapter=new InvoiceProductAdapter(this, voucherOrders);
+        adapter=new InvoiceProductAdapter(this, voucherOrders,voucher_id+"");
         recyclerView.setAdapter(adapter);
 
 
@@ -166,9 +173,13 @@ public class InvoiceActivity extends AppCompatActivity {
         tv_company_name.setText(invoice_name);
         tv_company_address.setText(invoice_address);
 
+        if(!voucher_type.equals("Agent")){
+            tv_total_point.setVisibility(View.INVISIBLE);
+        }
 
         if(sale){
             getSaleDetail();
+            et_extra_cost.setVisibility(View.GONE);
         }else {
             tv_total_foc.setText(""+total_foc);
             tv_total_quantity.setText(""+total_quantity);
@@ -180,8 +191,26 @@ public class InvoiceActivity extends AppCompatActivity {
             tv_voucher_stock.setText("Stock - "+stock_name);
             tv_voucher_date.setText("Date - "+getDate(System.currentTimeMillis()));
             tv_total_point.setText("Total rewarded point - "+total_point);
+
+            layoutExtraCost.setVisibility(View.GONE);
+            et_extra_cost.setVisibility(View.VISIBLE);
+
         }
 
+        layoutExtraCost.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(sale){
+                    Intent intent=new Intent(InvoiceActivity.this,DataUpdateActivity.class);
+                    intent.putExtra("hint","Enter Extra Cost");
+                    intent.putExtra("message","Update your extra cost for order of Voucher ID - "+voucher_id);
+                    intent.putExtra("key","admin_extra_cost");
+                    intent.putExtra("contentId",voucher_id+"");
+                    intent.putExtra("url", Routing.UPDATE_EXTRA_COST);
+                    startActivity(intent);
+                }
+            }
+        });
 
         setLogo();
 
@@ -197,6 +226,9 @@ public class InvoiceActivity extends AppCompatActivity {
                 .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
         if(!sale)  menu.add("DONE")
                 .setIcon(R.drawable.ic_baseline_check_24)
+                .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+        else menu.add("CANCEL")
+                .setIcon(R.drawable.ic_baseline_delete_24)
                 .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
 
         return super.onCreateOptionsMenu(menu);
@@ -229,10 +261,67 @@ public class InvoiceActivity extends AppCompatActivity {
                 }else{
                     takePermission();
                 }
+            }else if(item.getTitle().equals("CANCEL")){
+                showVoucherCancelDialog();
             }
         }
         return super.onOptionsItemSelected(item);
     }
+
+    private void showVoucherCancelDialog(){
+        MyDialog dialog=new MyDialog(this, "Cancel Voucher!", "Do you really want to cancel this voucher", new MyDialog.ConfirmClick() {
+            @Override
+            public void onConfirmClick() {
+                cancelOrder();
+            }
+        }) ;
+        dialog.showMyDialog();
+    }
+
+    private void cancelOrder(){
+        if (currentUserId != null && authToken != null) {
+            pb.setVisibility(View.VISIBLE);
+            new Thread(() -> {
+                MyHttp myHttp = new MyHttp(MyHttp.RequesMethod.POST, new MyHttp.Response() {
+                    @Override
+                    public void onResponse(String response) {
+                        Log.e("cancel Order ",response);
+                        postExecutor.execute(new Runnable() {
+                            @Override
+                            public void run() {
+                                try {
+                                    JSONObject jo = new JSONObject(response);
+                                    boolean isSuccess = jo.getString("status").equals("success");
+                                    if (isSuccess) {
+                                        finish();
+                                    } else {
+                                        pb.setVisibility(View.GONE);
+                                        Toast.makeText(getApplicationContext(), "Update fail! Try again.", Toast.LENGTH_SHORT).show();
+                                    }
+
+                                } catch (Exception e) {
+                                    Log.e("UpdateResJSONErr ",e.toString());
+                                }
+                            }
+                        });
+
+                    }
+
+                    @Override
+                    public void onError(String msg) {
+                        Log.e("CancelOrder Fail ",msg);
+
+                    }
+                }).url(Routing.CANCEL_ORDER_BY_ADMIN)
+                        .field("user_id", currentUserId)
+                        .field("auth_token", authToken)
+                        .field("voucher_cancel","1")
+                        .field("voucher_id",voucher_id+"");
+                myHttp.runTask();
+            }).start();
+        }
+    }
+
 
     private String getDate( long time){
         SimpleDateFormat sdf = new SimpleDateFormat("MMM dd,yyyy");
@@ -353,6 +442,9 @@ public class InvoiceActivity extends AppCompatActivity {
     }
 
     private void saveOnCloud(){
+
+        if(!TextUtils.isEmpty(et_extra_cost.getText().toString())) extra_cost=Integer.parseInt(et_extra_cost.getText().toString());
+
         pb.setVisibility(View.VISIBLE);
         new Thread(() -> {
             MyHttp myHttp=new MyHttp(MyHttp.RequesMethod.POST, new MyHttp.Response() {
@@ -366,6 +458,7 @@ public class InvoiceActivity extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(),"The Order has sent successfully",Toast.LENGTH_SHORT).show();
                         }
                     });
+                    VoucherActivity.invoiceCreated=true;
                     finish();
 
                 }
@@ -390,6 +483,7 @@ public class InvoiceActivity extends AppCompatActivity {
                     .field("customer_name",customer_name)
                     .field("customer_phone",customer_phone)
                     .field("customer_address",customer_address)
+                    .field("extra_cost",extra_cost+"")
                     .field("productJSON",makeOrderJSON());
 
             myHttp.runTask();
@@ -397,6 +491,13 @@ public class InvoiceActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    protected void onResume() {
+        if(sale){
+            getSaleDetail();
+        }
+        super.onResume();
+    }
 
     private String makeOrderJSON(){
         JSONArray orderJSONArr=new JSONArray();
@@ -461,7 +562,9 @@ public class InvoiceActivity extends AppCompatActivity {
 
         try {
             JSONObject joMain=new JSONObject(response);
-//            JSONObject joVoucher=joMain.getJSONObject("voucher");
+            JSONObject joVoucher=joMain.getJSONObject("voucher");
+            String extra_cost=joVoucher.getString("admin_extra_cost");
+            tv_extra_cost.setText(extra_cost);
 
             stock_name=joMain.getString("stock_name");  // use this
 
@@ -481,12 +584,14 @@ public class InvoiceActivity extends AppCompatActivity {
                 JSONObject joDetail=ja.getJSONObject(i);
                 String productName=joDetail.getString("product_name");
                 float price=(float) joDetail.getDouble("price");
-                double amount=joDetail.getDouble("amount");
+               // double amount=joDetail.getDouble("amount");
                 float point=(float) joDetail.getDouble("point");
                 int productId=joDetail.getInt("product_id");
                 int discount=joDetail.getInt("discount");
                 int quantity=joDetail.getInt("quantity");
                 int foc=joDetail.getInt("foc");
+
+                double amount=price*quantity;
 
                 total_foc+=foc;
                 total_quantity+=quantity;

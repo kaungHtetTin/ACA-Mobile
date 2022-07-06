@@ -6,10 +6,21 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <TextView
+            android:id="@+id/tv_price_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:background="#f00"
+            android:textColor="@color/white"
+            android:visibility="gone"
+            android:text="Price Edited"/>
+
         <LinearLayout
             android:id="@+id/order_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@id/tv_price_edit"
             android:orientation="vertical">
 
             <TextView
@@ -295,21 +306,24 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
+
             <Button
                 android:id="@+id/bt_sent_order"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="7dp"
                 android:layout_weight="1"
-                android:text="Sent" />
+                android:text="Sent"
+                android:textColor="@color/white" />
 
             <Button
                 android:id="@+id/bt_cancel"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_margin="7dp"
-                android:text="UNDo"
+                android:text="UnDo"
                 android:visibility="gone"
+                android:textColor="@color/white"
                 android:layout_height="wrap_content"/>
 
         </LinearLayout>

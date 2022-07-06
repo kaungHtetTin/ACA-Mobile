@@ -12,7 +12,7 @@
         android:textSize="14sp"
         android:textStyle="bold"
         android:padding="5dp"
-        android:textColor="@color/my_text_color"
+        android:textColor="#222"
         android:layout_height="32dp"/>
 
     <TextView
@@ -23,7 +23,7 @@
         android:background="@drawable/bg_stroke_green"
         android:textSize="14sp"
         android:textStyle="bold"
-        android:textColor="@color/my_text_color"
+        android:textColor="#222"
         android:layout_height="32dp"/>
 
     <TextView
@@ -34,7 +34,7 @@
         android:background="@drawable/bg_stroke_green"
         android:textSize="14sp"
         android:textStyle="bold"
-        android:textColor="@color/my_text_color"
+        android:textColor="#222"
         android:layout_height="32dp"/>
 
     <TextView
@@ -45,7 +45,7 @@
         android:textSize="14sp"
         android:textStyle="bold"
         android:padding="5dp"
-        android:textColor="@color/my_text_color"
+        android:textColor="#222"
         android:layout_height="32dp"/>
 
     <TextView
@@ -56,19 +56,9 @@
         android:background="@drawable/bg_stroke_green"
         android:textSize="14sp"
         android:textStyle="bold"
-        android:textColor="@color/my_text_color"
+        android:textColor="#222"
         android:layout_height="32dp"/>
 
-    <TextView
-
-        android:layout_width="100dp"
-        android:text="-"
-        android:gravity="center"
-        android:background="@drawable/bg_stroke_green"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        android:textColor="@color/my_text_color"
-        android:layout_height="32dp"/>
 
     <TextView
         android:id="@+id/tv_amount_total"
@@ -78,7 +68,7 @@
         android:background="@drawable/bg_stroke_green"
         android:textSize="14sp"
         android:textStyle="bold"
-        android:textColor="@color/my_text_color"
+        android:textColor="#222"
         android:layout_height="32dp"/>
 
     <TextView
@@ -90,7 +80,7 @@
         android:textSize="14sp"
         android:textStyle="bold"
         android:padding="5dp"
-        android:textColor="@color/my_text_color"
+        android:textColor="#222"
         android:layout_height="32dp"/>
 
 
@@ -103,7 +93,7 @@
         android:textSize="14sp"
         android:textStyle="bold"
         android:padding="5dp"
-        android:textColor="@color/my_text_color"
+        android:textColor="#222"
         android:layout_height="32dp"/>
 
     <TextView
@@ -115,7 +105,19 @@
         android:textSize="14sp"
         android:textStyle="bold"
         android:padding="5dp"
-        android:textColor="@color/my_text_color"
+        android:textColor="#222"
+        android:layout_height="32dp"/>
+
+    <TextView
+        android:id="@+id/tv_profit_percent"
+        android:layout_width="100dp"
+        android:text="0%"
+        android:gravity="center"
+        android:background="@drawable/bg_stroke_green"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:padding="5dp"
+        android:textColor="#222"
         android:layout_height="32dp"/>
 
 </LinearLayout>
